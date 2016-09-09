@@ -676,14 +676,14 @@ END GROUP
  .debug_frame   0x00000030       0x24 src/ASF/xmega/boards/xmega_a1_xplained/init.o
  .debug_frame   0x00000054       0x24 src/main.o
 
-.debug_str      0x00000000    0x26d97
+.debug_str      0x00000000    0x26d98
  *(.debug_str)
- .debug_str     0x00000000    0x2574c src/ASF/common/services/ioport/xmega/ioport_compat.o
-                              0x25da3 (size before relaxing)
- .debug_str     0x0002574c     0x12fe src/ASF/xmega/boards/xmega_a1_xplained/init.o
-                              0x2706b (size before relaxing)
- .debug_str     0x00026a4a      0x34d src/main.o
-                              0x2709d (size before relaxing)
+ .debug_str     0x00000000    0x2574d src/ASF/common/services/ioport/xmega/ioport_compat.o
+                              0x25da4 (size before relaxing)
+ .debug_str     0x0002574d     0x12fe src/ASF/xmega/boards/xmega_a1_xplained/init.o
+                              0x2706c (size before relaxing)
+ .debug_str     0x00026a4b      0x34d src/main.o
+                              0x2709e (size before relaxing)
 
 .debug_loc      0x00000000       0x66
  *(.debug_loc)
