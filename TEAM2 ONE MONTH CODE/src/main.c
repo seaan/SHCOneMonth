@@ -1,4 +1,4 @@
-/**asdf
+/**tsalve was here
  * \file
  *
  * \brief Empty user application template
@@ -21,11 +21,11 @@
  *
  */
 
-/*
+/*tsalve was here too
  * Include header files for all drivers that have been imported from
  * Atmel Software Framework (ASF).
  */
-/*
+/*tsalve was here as well
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
