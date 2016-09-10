@@ -59,9 +59,6 @@
 #include <ccp.h>
 #include <xmega_reset_cause.h>
 
-// From module: Common build items for user board support templates
-#include <user_board.h>
-
 // From module: Delay routines
 #include <delay.h>
 
@@ -108,5 +105,8 @@
 // From module: XMEGA compiler driver
 #include <compiler.h>
 #include <status_codes.h>
+
+// From module: XMEGA-A1 Xplained LED support enabled
+#include <led.h>
 
 #endif // ASF_H

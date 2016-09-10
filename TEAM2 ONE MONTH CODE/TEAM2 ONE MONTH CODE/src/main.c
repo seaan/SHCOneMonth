@@ -16,6 +16,7 @@
 //This is where you declare global variables, do this sparingly. It's okay to only have a few or no global variables
 
 uint8_t example = 0; //variable example, unsigned 8 bit, starts at 0
+uint8_t lightChase;
 /* End Global Variable Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Function Prototype Section */
@@ -47,8 +48,23 @@ int main (void)
 	
 	sysclk_enable_peripheral_clock(&ADCA);
 	
+	PORTE.DIR = 0b11111111; //Sets all the pins on PORTE as an output.
+	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
+	
 	while (1)
 	{
+		lightChase = 0b00000001;
+		for(int i = 0; i < 4; i++){
+			PORTE.OUT = ~lightChase;
+			lightChase >>= 1;
+			delay_ms(50);
+		}
+		lightChase = 0b1000000;
+		for(int i = 0; i < 4; i++){
+			PORTE.OUT = ~lightChase;
+			lightChase <<= 1;
+			delay_ms(50);
+		}
 		
 	}
 	
