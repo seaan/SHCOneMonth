@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Atmel Studio Solution File, Format Version 11.00
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TEAM2 ONE MONTH CODE", "TEAM2 ONE MONTH CODE\TEAM2 ONE MONTH CODE.cproj", "{CD7CEF8E-A826-4742-AD9D-9A36FACB6ADF}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TEAM2 ONE MONTH CODE", "TEAM2 ONE MONTH CODE.cproj", "{CD7CEF8E-A826-4742-AD9D-9A36FACB6ADF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
