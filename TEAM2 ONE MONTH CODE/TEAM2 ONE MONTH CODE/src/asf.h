@@ -52,6 +52,19 @@
  * running the ASF driver selector tool. Any changes will be discarded.
  */
 
+// From module: ADC - XMEGA A/AU Implementation
+#include <adc.h>
+
+// From module: CPU specific features
+#include <ccp.h>
+#include <xmega_reset_cause.h>
+
+// From module: Common build items for user board support templates
+#include <user_board.h>
+
+// From module: Delay routines
+#include <delay.h>
+
 // From module: GPIO - General purpose Input/Output
 #include <gpio.h>
 
@@ -64,14 +77,36 @@
 // From module: Interrupt management - XMEGA implementation
 #include <interrupt.h>
 
+// From module: NVM - Non Volatile Memory
+#include <nvm.h>
+
+// From module: PMIC - Programmable Multi-level Interrupt Controller
+#include <pmic.h>
+
 // From module: Part identification macros
 #include <parts.h>
+
+// From module: Sleep Controller driver
+#include <sleep.h>
+
+// From module: Sleep manager - XMEGA A/AU/B/D implementation
+#include <sleepmgr.h>
+#include <xmega/sleepmgr.h>
+
+// From module: Standard serial I/O (stdio) - XMEGA implementation
+#include <stdio_serial.h>
+
+// From module: System Clock Control - XMEGA A1/A3/A3B/A4/D/E implementation
+#include <sysclk.h>
+
+// From module: USART - Serial interface - XMEGA implementation
+#include <serial.h>
+
+// From module: USART - Universal Synchronous/Asynchronous Receiver/Transmitter
+#include <usart.h>
 
 // From module: XMEGA compiler driver
 #include <compiler.h>
 #include <status_codes.h>
-
-// From module: XMEGA-A1 Xplained LED support enabled
-#include <led.h>
 
 #endif // ASF_H
