@@ -3,7 +3,7 @@
  *
  * \brief Sleep controller driver
  *
- * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -39,9 +39,6 @@
  *
  * \asf_license_stop
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef SLEEP_H
 #define SLEEP_H
@@ -124,11 +121,11 @@ static inline void sleep_set_mode(enum SLEEP_SMODE_enum mode)
  * \subsection xmega_sleep_basic_usage_code Example code
  * Add to, e.g., the main loop in the application C-file:
  * \code
-	sleep_set_mode(SLEEP_SMODE_PDOWN_gc);
-	sleep_enable();
-	sleep_enter();
-	sleep_disable();
-\endcode
+ * sleep_set_mode(SLEEP_SMODE_PDOWN_gc);
+ * sleep_enable();
+ * sleep_enter();
+ * sleep_disable();
+ * \endcode
  *
  * \subsection xmega_sleep_basic_usage Workflow
  * -# Set what sleep mode to use, the different sleep modes can be found in the

@@ -3,7 +3,7 @@
  *
  * \brief Atmel part identification macros
  *
- * Copyright (C) 2012-2016 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -425,7 +425,6 @@
 		AVR8_PART_IS_DEFINED(ATmega164PA) || \
 		AVR8_PART_IS_DEFINED(ATmega324A)  || \
 		AVR8_PART_IS_DEFINED(ATmega324PA) || \
-		AVR8_PART_IS_DEFINED(ATmega324PB) || \
 		AVR8_PART_IS_DEFINED(ATmega644)   || \
 		AVR8_PART_IS_DEFINED(ATmega644A)  || \
 		AVR8_PART_IS_DEFINED(ATmega644PA) || \
@@ -449,18 +448,14 @@
 		AVR8_PART_IS_DEFINED(ATmega48)    || \
 		AVR8_PART_IS_DEFINED(ATmega48A)   || \
 		AVR8_PART_IS_DEFINED(ATmega48PA)  || \
-		AVR8_PART_IS_DEFINED(ATmega48PB)  || \
 		AVR8_PART_IS_DEFINED(ATmega88)    || \
 		AVR8_PART_IS_DEFINED(ATmega88A)   || \
 		AVR8_PART_IS_DEFINED(ATmega88PA)  || \
-		AVR8_PART_IS_DEFINED(ATmega88PB)  || \
 		AVR8_PART_IS_DEFINED(ATmega168)   || \
 		AVR8_PART_IS_DEFINED(ATmega168A)  || \
 		AVR8_PART_IS_DEFINED(ATmega168PA) || \
-		AVR8_PART_IS_DEFINED(ATmega168PB) || \
 		AVR8_PART_IS_DEFINED(ATmega328)   || \
-		AVR8_PART_IS_DEFINED(ATmega328P)  || \
-		AVR8_PART_IS_DEFINED(ATmega328PB) \
+		AVR8_PART_IS_DEFINED(ATmega328P) \
 		)
 
 /** ATmegaxx8A/P/PA group */
@@ -981,15 +976,6 @@
 /** @} */
 
 /**
- * \name SAMB11 series
- * @{
- */
-#define SAMB11G ( \
-		SAM_PART_IS_DEFINED(SAMB11G18A) \
-	)
-/** @} */
-
-/**
  * \name SAMD09 series
  * @{
  */
@@ -1023,10 +1009,6 @@
 		SAM_PART_IS_DEFINED(SAMD10D13AM) || \
 		SAM_PART_IS_DEFINED(SAMD10D14AM) \
 	)
-
-#define SAMD10DU ( \
-		SAM_PART_IS_DEFINED(SAMD10D14AU) \
-	)
 /** @} */
 
 /**
@@ -1043,10 +1025,6 @@
 
 #define SAMD11DM ( \
 		SAM_PART_IS_DEFINED(SAMD11D14AM) \
-	)
-
-#define SAMD11DU ( \
-		SAM_PART_IS_DEFINED(SAMD11D14AU) \
 	)
 /** @} */
 
@@ -1226,13 +1204,11 @@
  */
 #define SAM4E8 ( \
 		SAM_PART_IS_DEFINED(SAM4E8C) || \
-		SAM_PART_IS_DEFINED(SAM4E8CB) || \
 		SAM_PART_IS_DEFINED(SAM4E8E) \
 		)
 
 #define SAM4E16 ( \
 		SAM_PART_IS_DEFINED(SAM4E16C) || \
-		SAM_PART_IS_DEFINED(SAM4E16CB) || \
 		SAM_PART_IS_DEFINED(SAM4E16E) \
 		)
 /** @} */
@@ -1542,10 +1518,10 @@
 #define SAMD09 (SAMD09C || SAMD09D)
 
 /** SAMD10 Family */
-#define SAMD10 (SAMD10C || SAMD10DS || SAMD10DM || SAMD10DU)
+#define SAMD10 (SAMD10C || SAMD10DS || SAMD10DM)
 
 /** SAMD11 Family */
-#define SAMD11 (SAMD11C || SAMD11DS || SAMD11DM || SAMD11DU)
+#define SAMD11 (SAMD11C || SAMD11DS || SAMD11DM)
 
 /** SAMDA1 Family */
 #define SAMDA1 (SAMDA1J || SAMDA1G || SAMDA1E)
@@ -1555,9 +1531,6 @@
 
 /** SAMR21 Family */
 #define SAMR21 (SAMR21G || SAMR21E)
-
-/** SAMB11 Family */
-#define SAMB11 (SAMB11G)
 
 /** SAML21 Family */
 #define SAML21 (SAML21J || SAML21G || SAML21E)
@@ -1596,9 +1569,6 @@
 
 /** SAMG Family */
 #define SAMG (SAMG51 || SAMG53 || SAMG54 || SAMG55)
-
-/** SAMB Family */
-#define SAMB (SAMB11)
 
 /** SAMV71 Family */
 #define SAMV71 (SAMV71J || SAMV71N || SAMV71Q)
