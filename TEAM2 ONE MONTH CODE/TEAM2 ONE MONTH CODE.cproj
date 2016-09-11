@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectVersion>6.2</ProjectVersion>
+    <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
     <ProjectGuid>{cd7cef8e-a826-4742-ad9d-9a36facb6adf}</ProjectGuid>
     <avrdevice>ATxmega128A1</avrdevice>
@@ -100,7 +100,7 @@
   <documentation help="http://asf.atmel.com/docs/3.27.0/common.applications.user_application.xmega_a1_xplained/html/index.html" />
   <offline-documentation help="" />
   <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.10.1" />
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.22.0" />
   </dependencies>
   <project id="common.applications.user_application.xmega_a1_xplained" value="Add" config="" content-id="Atmel.ASF" />
   <board id="board.xmega_a1_xplained" value="Add" config="" content-id="Atmel.ASF" />
@@ -111,6 +111,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGcc>
+  <avrgcc.common.Device>-mmcu=atxmega128a1 -B "%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\gcc\dev\atxmega128a1"</avrgcc.common.Device>
   <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
@@ -149,6 +150,7 @@
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
       <Value>../src/ASF/xmega/drivers/adc</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
+      <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -189,6 +191,7 @@
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
       <Value>../src/ASF/xmega/drivers/adc</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
+      <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
 </AvrGcc>
@@ -197,6 +200,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
+  <avrgcc.common.Device>-mmcu=atxmega128a1 -B "%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\gcc\dev\atxmega128a1"</avrgcc.common.Device>
   <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
@@ -235,6 +239,7 @@
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
       <Value>../src/ASF/xmega/drivers/adc</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
+      <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -276,6 +281,7 @@
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
       <Value>../src/ASF/xmega/drivers/adc</Value>
       <Value>../src/ASF/xmega/drivers/usart</Value>
+      <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
   <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
