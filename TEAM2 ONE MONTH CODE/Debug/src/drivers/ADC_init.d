@@ -62,7 +62,8 @@ src/drivers/ADC_init.d src/drivers/ADC_init.o: ../src/drivers/ADC_init.c \
  ../src/ASF/xmega/utils/status_codes.h \
  ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
- ../src/ASF/xmega/boards/xmega_a1_xplained/led.h
+ ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
+ ../src/Drivers/ADC_init.h
 
 ../src/asf.h:
 
@@ -201,3 +202,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/config/conf_usart_serial.h:
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
+
+../src/Drivers/ADC_init.h:
