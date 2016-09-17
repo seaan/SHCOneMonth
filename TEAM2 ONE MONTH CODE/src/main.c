@@ -3,6 +3,7 @@
 /* Begin #include section */
 //This is where you will need to include the header files that you have written code in to use the code
 #include <asf.h> //This will mainly include behind the scene code and all header files within the config folder
+#include "Drivers/timer_counter_init.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +44,7 @@ int main (void)
 	
 	/* Initializations */;
 	UART_Comms_Init();
-	
+	TCE0_init(12499);
 	/* Flight Code */
 	
 	sysclk_enable_peripheral_clock(&ADCA);
@@ -51,21 +52,32 @@ int main (void)
 	PORTE.DIR = 0b11111111; //Sets all the pins on PORTE as an output.
 	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
 	
-	while (1)
-	{
+	while (1){
+		/*
 		lightChase = 0b00000001;
 		for(int i = 0; i < 4; i++){
 			PORTE.OUT = ~lightChase;
 			lightChase >>= 1;
-			delay_ms(50);
+			delay_ms(100);
 		}
 		lightChase = 0b1000000;
 		for(int i = 0; i < 4; i++){
 			PORTE.OUT = ~lightChase;
 			lightChase <<= 1;
-			delay_ms(50);
+			delay_ms(100);
 		}
+		*/
 		
 	}
 	
+}
+void TCE0_init(uint16_t period){
+	PORTE.DIR = 0b11111111;
+	TCE0.CTRLA = 0b00000110; //0110 is prescalar 256.
+	TCE0.CTRLB = 0b11110011; //All LED outputs and Single Slope.
+	TCE0.PER = period; //THis will make the LEDs blink at 10Hz.
+	TCE0.CCA = TCE0.PER - (TCE0.PER/10); //90% Duty cycle equates to 10% on time for LEDs.
+	TCE0.CCB = TCE0.PER - (TCE0.PER/10);
+	TCE0.CCC = TCE0.PER - (TCE0.PER/10);
+	TCE0.CCD = TCE0.PER - (TCE0.PER/10);
 }

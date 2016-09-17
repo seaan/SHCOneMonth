@@ -10,6 +10,6 @@
 #define TIMER_COUNTER_INIT_H_
 
 /* Place any #defines or function prototypes here */
-
+void TCE0_init(uint16_t period);
 
 #endif /* TIMER_COUNTER_INIT_H_ */
