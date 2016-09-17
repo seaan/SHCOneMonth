@@ -44,7 +44,7 @@ int main (void)
 	
 	/* Initializations */;
 	UART_Comms_Init();
-	TCE0_init(12499);
+	TCE0_init(12499,10);
 	/* Flight Code */
 	
 	sysclk_enable_peripheral_clock(&ADCA);
@@ -70,14 +70,4 @@ int main (void)
 		
 	}
 	
-}
-void TCE0_init(uint16_t period){
-	PORTE.DIR = 0b11111111;
-	TCE0.CTRLA = 0b00000110; //0110 is prescalar 256.
-	TCE0.CTRLB = 0b11110011; //All LED outputs and Single Slope.
-	TCE0.PER = period; //THis will make the LEDs blink at 10Hz.
-	TCE0.CCA = TCE0.PER - (TCE0.PER/10); //90% Duty cycle equates to 10% on time for LEDs.
-	TCE0.CCB = TCE0.PER - (TCE0.PER/10);
-	TCE0.CCC = TCE0.PER - (TCE0.PER/10);
-	TCE0.CCD = TCE0.PER - (TCE0.PER/10);
 }
