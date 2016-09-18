@@ -10,7 +10,7 @@
 #define ADC_INIT_H_
 
 /* Place any #defines or function prototypes here */
-
+void ADC_init(void);
 
 
 #endif /* ADC_INIT_H_ */
