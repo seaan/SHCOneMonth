@@ -30,6 +30,8 @@ src\ASF\xmega\drivers\usart\usart.c
 
 src\drivers\ADC_init.c
 
+src\drivers\testClass.c
+
 src\drivers\timer_counter_init.c
 
 src\drivers\uart_comms.c

@@ -538,6 +538,12 @@
     <Compile Include="src\drivers\ADC_init.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\drivers\testClass.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\testClass.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\drivers\timer_counter_init.c">
       <SubType>compile</SubType>
     </Compile>

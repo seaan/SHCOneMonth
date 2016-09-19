@@ -5,6 +5,7 @@
 #include <asf.h> //This will mainly include behind the scene code and all header files within the config folder
 #include "Drivers/timer_counter_init.h"
 #include "Drivers/ADC_init.h"
+#include "Drivers/testClass.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,7 +19,6 @@
 //This is where you declare global variables, do this sparingly. It's okay to only have a few or no global variables
 
 uint8_t example = 0; //variable example, unsigned 8 bit, starts at 0
-uint8_t lightChase;
 /* End Global Variable Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Function Prototype Section */
@@ -47,6 +47,7 @@ int main (void)
 	/* Initializations */;
 	UART_Comms_Init();
 	TCE0_init(12499,100);
+	ADC_init();
 	/* Flight Code */
 	
 	sysclk_enable_peripheral_clock(&ADCA);
@@ -55,32 +56,10 @@ int main (void)
 	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
 	
 	while (1){
-		ADCA.CH0.CTRL |= 0b10000000; //Start the conversion.. FOR THOMAS: THIS IS A BITWISE OPERATOR THAT KEEPS 1's and MODIFIES ZEROES.
-		while(ADCA.CH0.INTFLAGS == 0); //Wait until conversion is done.
-		uint16_t adcReading = ADCA.CH0.RES; //Save the result into variable called adcReading.
-		float voltage = 0.0005*adcReading - 0.0941; //This converts adcReading into an actual voltage based off of slope.
-		printf("%i\n",(uint16_t)(voltage*1000)); //voltage*1000 converts it into millivolts.
-		printf("test");
-		//If we hadn't multiplied by 1000, the typecast would've truncated the voltage reading to just the one's place.
-		delay_ms(250);
-		
-		/*
-		lightChase = 0b00000001;
-		for(int i = 0; i < 4; i++){
-			PORTE.OUT = ~lightChase;
-			lightChase >>= 1;
-			delay_ms(100);
-		}
-		lightChase = 0b1000000;
-		for(int i = 0; i < 4; i++){
-			PORTE.OUT = ~lightChase;
-			lightChase <<= 1;
-			delay_ms(100);
-		}
-		*/
-	
-	//while(ADCA.CH0.INTFLAGS)
-		
+		printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
+
+		//lightChase(50); //Runs function lightChase with a 50ms delay before switching each light.
+
 	}
 	
 }
