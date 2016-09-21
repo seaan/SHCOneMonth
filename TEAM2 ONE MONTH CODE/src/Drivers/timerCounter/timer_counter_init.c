@@ -6,7 +6,7 @@
  */ 
 
 #include <asf.h>
-#include "Drivers/timer_counter_init.h"
+#include "Drivers/timerCounter/timer_counter_init.h"
 
 /* This driver can be used to initialize any of the timer counters. Note, only the instructions on 
    how to initialize the TCs is given, you must write the actual code */

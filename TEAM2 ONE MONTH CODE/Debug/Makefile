@@ -75,9 +75,10 @@ SUBDIRS :=  \
 ../src/drivers/Altitude \
 ../src/drivers/flightState/ \
 ../src/drivers/ADC \
+../src/drivers/descentControl \
 ../src/drivers/Velocity \
 ../src/drivers/uart \
-../src/drivers/Timer\ Counter \
+../src/drivers/timerCounter \
 ../src/drivers/test
 
 
@@ -96,9 +97,10 @@ C_SRCS +=  \
 ../src/ASF/xmega/drivers/usart/usart.c \
 ../src/drivers/ADC/ADC_init.c \
 ../src/drivers/Altitude/getAltitude.c \
+../src/drivers/descentControl/descentControl.c \
 ../src/drivers/flightState/flightState.c \
 ../src/drivers/test/testClass.c \
-../src/drivers/Timer%20Counter/timer_counter_init.c \
+../src/drivers/timerCounter/timer_counter_init.c \
 ../src/drivers/uart/uart_comms.c \
 ../src/drivers/Velocity/getVelocity.c \
 ../src/main.c
@@ -128,9 +130,10 @@ src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/usart/usart.o \
 src/drivers/ADC/ADC_init.o \
 src/drivers/Altitude/getAltitude.o \
+src/drivers/descentControl/descentControl.o \
 src/drivers/flightState/flightState.o \
 src/drivers/test/testClass.o \
-src/drivers/Timer%20Counter/timer_counter_init.o \
+src/drivers/timerCounter/timer_counter_init.o \
 src/drivers/uart/uart_comms.o \
 src/drivers/Velocity/getVelocity.o \
 src/main.o
@@ -151,9 +154,10 @@ src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/usart/usart.o \
 src/drivers/ADC/ADC_init.o \
 src/drivers/Altitude/getAltitude.o \
+src/drivers/descentControl/descentControl.o \
 src/drivers/flightState/flightState.o \
 src/drivers/test/testClass.o \
-src/drivers/Timer%20Counter/timer_counter_init.o \
+src/drivers/timerCounter/timer_counter_init.o \
 src/drivers/uart/uart_comms.o \
 src/drivers/Velocity/getVelocity.o \
 src/main.o
@@ -174,9 +178,10 @@ src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/usart/usart.d \
 src/drivers/ADC/ADC_init.d \
 src/drivers/Altitude/getAltitude.d \
+src/drivers/descentControl/descentControl.d \
 src/drivers/flightState/flightState.d \
 src/drivers/test/testClass.d \
-src/drivers/Timer%20Counter/timer_counter_init.d \
+src/drivers/timerCounter/timer_counter_init.d \
 src/drivers/uart/uart_comms.d \
 src/drivers/Velocity/getVelocity.d \
 src/main.d
@@ -197,9 +202,10 @@ src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/usart/usart.d \
 src/drivers/ADC/ADC_init.d \
 src/drivers/Altitude/getAltitude.d \
+src/drivers/descentControl/descentControl.d \
 src/drivers/flightState/flightState.d \
 src/drivers/test/testClass.d \
-src/drivers/Timer%20Counter/timer_counter_init.d \
+src/drivers/timerCounter/timer_counter_init.d \
 src/drivers/uart/uart_comms.d \
 src/drivers/Velocity/getVelocity.d \
 src/main.d
@@ -309,6 +315,13 @@ src/drivers/Altitude/getAltitude.o: ../src/drivers/Altitude/getAltitude.c
 	@echo Finished building: $<
 	
 
+src/drivers/descentControl/descentControl.o: ../src/drivers/descentControl/descentControl.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 4.9.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DIOPORT_XMEGA_COMPAT -DBOARD=XMEGA_A1_XPLAINED  -I"../common/applications/user_application/atxmega128a1_xmega_a1_xplained/config" -I"../src/ASF/xmega/utils" -I"../src/ASF/xmega/boards/xmega_a1_xplained" -I"../src/ASF/common/boards" -I"../src/ASF/xmega/boards" -I"../src/config" -I"../src/ASF/xmega/utils/preprocessor" -I"../src/ASF/common/utils" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/ASF/common/services/gpio" -I"../src/ASF/xmega/drivers/cpu" -I"../src/ASF/xmega/drivers/nvm" -I"../src/ASF/xmega/drivers/pmic" -I"../src/ASF/xmega/drivers/sleep" -I"../src/ASF/common/services/clock" -I"../src/ASF/common/services/delay" -I"../src/ASF/common/services/serial/xmega_usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/common/services/sleepmgr" -I"../src/ASF/common/utils/stdio/stdio_serial" -I"../src/ASF/xmega/drivers/adc" -I"../src/ASF/xmega/drivers/usart" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=atxmega128a1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\gcc\dev\atxmega128a1" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 src/drivers/flightState/flightState.o: ../src/drivers/flightState/flightState.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
@@ -323,7 +336,7 @@ src/drivers/test/testClass.o: ../src/drivers/test/testClass.c
 	@echo Finished building: $<
 	
 
-src/drivers/Timer%20Counter/timer_counter_init.o: ../src/drivers/Timer%20Counter/timer_counter_init.c
+src/drivers/timerCounter/timer_counter_init.o: ../src/drivers/timerCounter/timer_counter_init.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DIOPORT_XMEGA_COMPAT -DBOARD=XMEGA_A1_XPLAINED  -I"../common/applications/user_application/atxmega128a1_xmega_a1_xplained/config" -I"../src/ASF/xmega/utils" -I"../src/ASF/xmega/boards/xmega_a1_xplained" -I"../src/ASF/common/boards" -I"../src/ASF/xmega/boards" -I"../src/config" -I"../src/ASF/xmega/utils/preprocessor" -I"../src/ASF/common/utils" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/ASF/common/services/gpio" -I"../src/ASF/xmega/drivers/cpu" -I"../src/ASF/xmega/drivers/nvm" -I"../src/ASF/xmega/drivers/pmic" -I"../src/ASF/xmega/drivers/sleep" -I"../src/ASF/common/services/clock" -I"../src/ASF/common/services/delay" -I"../src/ASF/common/services/serial/xmega_usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/common/services/sleepmgr" -I"../src/ASF/common/utils/stdio/stdio_serial" -I"../src/ASF/xmega/drivers/adc" -I"../src/ASF/xmega/drivers/usart" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=atxmega128a1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\gcc\dev\atxmega128a1" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -436,6 +449,13 @@ src/drivers/Altitude/%.o: ../src/drivers/Altitude/%.c
 	@echo Finished building: $<
 	
 
+src/drivers/descentControl/%.o: ../src/drivers/descentControl/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 4.9.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DIOPORT_XMEGA_COMPAT -DBOARD=XMEGA_A1_XPLAINED  -I"../common/applications/user_application/atxmega128a1_xmega_a1_xplained/config" -I"../src/ASF/xmega/utils" -I"../src/ASF/xmega/boards/xmega_a1_xplained" -I"../src/ASF/common/boards" -I"../src/ASF/xmega/boards" -I"../src/config" -I"../src/ASF/xmega/utils/preprocessor" -I"../src/ASF/common/utils" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/ASF/common/services/gpio" -I"../src/ASF/xmega/drivers/cpu" -I"../src/ASF/xmega/drivers/nvm" -I"../src/ASF/xmega/drivers/pmic" -I"../src/ASF/xmega/drivers/sleep" -I"../src/ASF/common/services/clock" -I"../src/ASF/common/services/delay" -I"../src/ASF/common/services/serial/xmega_usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/common/services/sleepmgr" -I"../src/ASF/common/utils/stdio/stdio_serial" -I"../src/ASF/xmega/drivers/adc" -I"../src/ASF/xmega/drivers/usart" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=atxmega128a1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\gcc\dev\atxmega128a1" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 src/drivers/flightState/%.o: ../src/drivers/flightState/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
@@ -450,7 +470,7 @@ src/drivers/test/%.o: ../src/drivers/test/%.c
 	@echo Finished building: $<
 	
 
-src/drivers/Timer%20Counter/%.o: ../src/drivers/Timer%20Counter/%.c
+src/drivers/timerCounter/%.o: ../src/drivers/timerCounter/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DIOPORT_XMEGA_COMPAT -DBOARD=XMEGA_A1_XPLAINED  -I"../common/applications/user_application/atxmega128a1_xmega_a1_xplained/config" -I"../src/ASF/xmega/utils" -I"../src/ASF/xmega/boards/xmega_a1_xplained" -I"../src/ASF/common/boards" -I"../src/ASF/xmega/boards" -I"../src/config" -I"../src/ASF/xmega/utils/preprocessor" -I"../src/ASF/common/utils" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/ASF/common/services/gpio" -I"../src/ASF/xmega/drivers/cpu" -I"../src/ASF/xmega/drivers/nvm" -I"../src/ASF/xmega/drivers/pmic" -I"../src/ASF/xmega/drivers/sleep" -I"../src/ASF/common/services/clock" -I"../src/ASF/common/services/delay" -I"../src/ASF/common/services/serial/xmega_usart" -I"../src/ASF/common/services/serial" -I"../src/ASF/common/services/sleepmgr" -I"../src/ASF/common/utils/stdio/stdio_serial" -I"../src/ASF/xmega/drivers/adc" -I"../src/ASF/xmega/drivers/usart" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=atxmega128a1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\gcc\dev\atxmega128a1" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
