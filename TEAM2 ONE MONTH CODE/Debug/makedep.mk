@@ -28,13 +28,19 @@ src\ASF\xmega\drivers\nvm\nvm_asm.s
 
 src\ASF\xmega\drivers\usart\usart.c
 
-src\drivers\ADC_init.c
+src\drivers\ADC\ADC_init.c
 
-src\drivers\testClass.c
+src\drivers\Altitude\getAltitude.c
 
-src\drivers\timer_counter_init.c
+src\drivers\flightState\flightState.c
 
-src\drivers\uart_comms.c
+src\drivers\test\testClass.c
+
+src\drivers\Timer%2520Counter\timer_counter_init.c
+
+src\drivers\uart\uart_comms.c
+
+src\drivers\Velocity\getVelocity.c
 
 src\main.c
 

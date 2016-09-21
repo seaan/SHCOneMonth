@@ -344,6 +344,13 @@
     <Folder Include="src\ASF\xmega\utils\preprocessor\" />
     <Folder Include="src\config\" />
     <Folder Include="src\drivers" />
+    <Folder Include="src\drivers\Altitude" />
+    <Folder Include="src\drivers\flightState\" />
+    <Folder Include="src\drivers\ADC" />
+    <Folder Include="src\drivers\Velocity" />
+    <Folder Include="src\drivers\uart" />
+    <Folder Include="src\drivers\timerCounter" />
+    <Folder Include="src\drivers\test" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\asf.h">
@@ -532,25 +539,43 @@
     <Compile Include="src\config\conf_usart_serial.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\ADC_init.c">
+    <Compile Include="src\drivers\ADC\ADC_init.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\ADC_init.h">
+    <Compile Include="src\drivers\ADC\ADC_init.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\testClass.c">
+    <Compile Include="src\drivers\Altitude\getAltitude.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\testClass.h">
+    <Compile Include="src\drivers\Altitude\getAltitude.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\timer_counter_init.c">
+    <Compile Include="src\drivers\flightState\flightState.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\timer_counter_init.h">
+    <Compile Include="src\drivers\flightState\flightState.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\uart_comms.c">
+    <Compile Include="src\drivers\test\testClass.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\test\testClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\timerCounter\timer_counter_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\timerCounter\timer_counter_init.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\uart\uart_comms.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\Velocity\getVelocity.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\Velocity\getVelocity.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">

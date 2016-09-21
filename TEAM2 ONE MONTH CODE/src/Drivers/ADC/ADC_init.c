@@ -5,7 +5,7 @@
  *  Author: abower
  */ 
 #include <asf.h>
-#include "Drivers/ADC_init.h"
+#include "Drivers/ADC/ADC_init.h"
 /* This driver can be used to initialize any of the ADCs */
 
 void ADC_init(void){

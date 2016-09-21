@@ -63,7 +63,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
  ../src/Drivers/timer_counter_init.h ../src/Drivers/ADC_init.h \
- ../src/Drivers/testClass.h
+ ../src/Drivers/testClass.h ../src/Drivers/flightState.h
 
 ../src/asf.h:
 
@@ -208,3 +208,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/Drivers/ADC_init.h:
 
 ../src/Drivers/testClass.h:
+
+../src/Drivers/flightState.h:
