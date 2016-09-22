@@ -342,17 +342,38 @@
     <Folder Include="src\ASF\xmega\utils\assembler\" />
     <Folder Include="src\ASF\xmega\utils\bit_handling\" />
     <Folder Include="src\ASF\xmega\utils\preprocessor\" />
+    <Folder Include="src\Calculations\Altitude\" />
+    <Folder Include="src\Calculations\Velocity\" />
     <Folder Include="src\config\" />
     <Folder Include="src\drivers" />
-    <Folder Include="src\drivers\Altitude" />
-    <Folder Include="src\drivers\flightState\" />
     <Folder Include="src\drivers\ADC" />
-    <Folder Include="src\drivers\Velocity" />
+    <Folder Include="src\drivers\Temperature" />
+    <Folder Include="src\drivers\Pressure" />
     <Folder Include="src\drivers\uart" />
     <Folder Include="src\drivers\timerCounter" />
-    <Folder Include="src\drivers\test" />
+    <Folder Include="src\flightState\" />
+    <Folder Include="src\Calculations" />
+    <Folder Include="src\test\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Calculations\Altitude\getAltitude.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Calculations\Altitude\getAltitude.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Calculations\Velocity\getVelocity.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Calculations\Velocity\getVelocity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\test\testClass.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\test\testClass.h">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\asf.h">
       <SubType>compile</SubType>
     </None>
@@ -545,22 +566,16 @@
     <Compile Include="src\drivers\ADC\ADC_init.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\Altitude\getAltitude.c">
+    <Compile Include="src\drivers\Pressure\getPressure.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\Altitude\getAltitude.h">
+    <Compile Include="src\drivers\Pressure\getPressure.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\flightState\flightState.c">
+    <Compile Include="src\drivers\Temperature\getTemperature.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\flightState\flightState.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\drivers\test\testClass.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\drivers\test\testClass.h">
+    <Compile Include="src\drivers\Temperature\getTemperature.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\drivers\timerCounter\timer_counter_init.c">
@@ -572,10 +587,10 @@
     <Compile Include="src\drivers\uart\uart_comms.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\Velocity\getVelocity.c">
+    <Compile Include="src\flightState\flightState.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\Velocity\getVelocity.h">
+    <Compile Include="src\flightState\flightState.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">

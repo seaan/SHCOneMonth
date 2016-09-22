@@ -6,7 +6,7 @@
 #include "Drivers/timerCounter/timer_counter_init.h"
 #include "Drivers/ADC/ADC_init.h"
 #include "Drivers/test/testClass.h"
-#include "Drivers/flightState/flightState.h"
+#include "src/flightState/flightState.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
