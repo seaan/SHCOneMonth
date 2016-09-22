@@ -347,7 +347,6 @@
     <Folder Include="src\drivers\Altitude" />
     <Folder Include="src\drivers\flightState\" />
     <Folder Include="src\drivers\ADC" />
-    <Folder Include="src\drivers\descentControl" />
     <Folder Include="src\drivers\Velocity" />
     <Folder Include="src\drivers\uart" />
     <Folder Include="src\drivers\timerCounter" />
@@ -550,12 +549,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\drivers\Altitude\getAltitude.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\drivers\descentControl\descentControl.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\drivers\descentControl\descentControl.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\drivers\flightState\flightState.c">

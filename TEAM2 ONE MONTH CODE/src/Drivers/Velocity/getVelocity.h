@@ -9,7 +9,8 @@
 #ifndef GETVELOCITY_H_
 #define GETVELOCITY_H_
 
-int getVelocity(uint8_t a, int8_t t); //Velocity function takes in deltaAlt (a) and deltaTime (t)
+float getVelocity(void); //Velocity function
+float exponentialSmoothing(float previousVel, float velocity);
 
 
 

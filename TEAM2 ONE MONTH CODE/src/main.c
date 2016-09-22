@@ -14,7 +14,7 @@
 //This is where you can define constants, assign names to numbers, etc
 
 #define EXAMPLE		(0xFF) //Now you can type EXAMPLE and the compiler will understand hexadecimal FF, or decimal 255
-#define initialAltitude (getAltitude()) //Takes pressure,temperature and runs through function to find initial altitude. This is then the measure used against all other measurements.
+#define INIT_ALTITUDE (getAltitude()) //Takes pressure,temperature and runs through function to find initial altitude. This is then the measure used against all other measurements.
 /* End #define Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Global Variable Section */
@@ -37,7 +37,6 @@ void Example(void); //function called Example with no return or argument input, 
 
 int main (void)
 {
-	int flightState;
 	/* Initialize the system clock, 32MHz, this also turns off all peripheral clocks */
 	sysclk_init();
 	sysclk_enable_peripheral_clock(&USARTC0); //For every peripheral, you must enable the clock like shown here. Ex. Timer counters, SPI, ADCs
@@ -55,29 +54,12 @@ int main (void)
 	/* Flight Code */
 	PORTE.DIR = 0b11111111; //Sets all the pins on PORTE as an output.
 	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
-	flightState = 0; //Sets flight state to pre-launch.
 
 	while (1){
-
-		//Switch case for different flight states. As each flight state completes, breaking their while loop and setting the flight state to the next stage.
-		switch(flightState){
-			case '0':
-				flightState = flightStateZero();
-				break;
-			case '1':
-				flightState = flightStateOne();
-				break;
-			case '2':
-				flightState = flightStateTwo();
-				break;
-			case '3':
-				flightState = flightStateThree();
-				break;
-			default:
-				flightState = flightStateZero();
-		}
-		
-		
+		flightStateZero();
+		flightStateOne();
+		flightStateTwo();
+		flightStateThree();
 		
 		//Already written TEST cases
 		/*printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.

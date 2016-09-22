@@ -66,8 +66,7 @@ src/drivers/flightState/flightState.d \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
  ../src/Drivers/flightState/flightState.h \
  ../src/Drivers/Altitude/getAltitude.h \
- ../src/Drivers/Velocity/getVelocity.h \
- ../src/Drivers/descentControl/descentControl.h
+ ../src/Drivers/Velocity/getVelocity.h
 
 ../src/asf.h:
 
@@ -212,5 +211,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/Drivers/Altitude/getAltitude.h:
 
 ../src/Drivers/Velocity/getVelocity.h:
-
-../src/Drivers/descentControl/descentControl.h:

@@ -8,9 +8,9 @@
 #ifndef FLIGHTSTATE_H_
 #define FLIGHTSTATE_H_
 
-int flightStateZero(void);  //Pre-Launch
-int flightStateOne(void);   //Ascent
-int flightStateTwo(void);   //Descent
-int flightStateThree(void); //Touchdown
+void flightStateZero(void);  //Pre-Launch
+void flightStateOne(void);   //Ascent
+void flightStateTwo(void);   //Descent
+void flightStateThree(void); //Touchdown
 
 #endif /* FLIGHTSTATE_H_ */

@@ -32,8 +32,6 @@ src\drivers\ADC\ADC_init.c
 
 src\drivers\Altitude\getAltitude.c
 
-src\drivers\descentControl\descentControl.c
-
 src\drivers\flightState\flightState.c
 
 src\drivers\test\testClass.c
