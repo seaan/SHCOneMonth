@@ -18,8 +18,8 @@
 	for(int i = 0; i < 25; i++){ //For each element
 		velocity = (finalAlt - getAltitude(0,0))/.01; //0,0 is placeholder, sets the delta altitude for this iteration to the final altitude of the previous iteration subtracted by the current altitude.
 		velocityTable[i] = velocity; //Set the current element to the delta altitude.
-		delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz.
 		finalAlt = getAltitude(0,0); //0,0 is placeholder, sets the final altitude for the iteration to the current altitude.
+		delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz.
 	}
 	//Now we know the velocity for 24 different samples over a total of 240ms (we threw out the initial calculation) . We now need to exponentially smooth the data.
 
