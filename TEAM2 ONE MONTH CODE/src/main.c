@@ -3,9 +3,10 @@
 /* Begin #include section */
 //This is where you will need to include the header files that you have written code in to use the code
 #include <asf.h> //This will mainly include behind the scene code and all header files within the config folder
-#include "Drivers/timer_counter_init.h"
-#include "Drivers/ADC_init.h"
-#include "Drivers/testClass.h"
+#include "Drivers/timerCounter/timer_counter_init.h"
+#include "Drivers/ADC/ADC_init.h"
+#include "test/testClass.h"
+#include "flightState/flightState.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,9 +40,10 @@ int main (void)
 	sysclk_init();
 	sysclk_enable_peripheral_clock(&USARTC0); //For every peripheral, you must enable the clock like shown here. Ex. Timer counters, SPI, ADCs
 	sysclk_enable_peripheral_clock(&ADCA); //Analog to Digital Converter clock initialization.
+	sysclk_enable_peripheral_clock(&TCE0); //Timer Counter clock initialization
 	
 	/* Example, Timer Counter on PORTE */
-	sysclk_enable_peripheral_clock(&TCE0);
+	
 	sysclk_enable_module(SYSCLK_PORT_E, SYSCLK_HIRES); //You must have this line for every timer counter due to a flaw in the design of the chip
 	
 	/* Initializations */;
@@ -49,16 +51,18 @@ int main (void)
 	TCE0_init(12499,100);
 	ADC_init();
 	/* Flight Code */
-	
-	sysclk_enable_peripheral_clock(&ADCA);
-	
 	PORTE.DIR = 0b11111111; //Sets all the pins on PORTE as an output.
 	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
-	
-	while (1){
-		printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
 
-		//lightChase(50); //Runs function lightChase with a 50ms delay before switching each light.
+	while (1){
+		flightStateZero();
+		flightStateOne();
+		flightStateTwo();
+		flightStateThree();
+		
+		//Already written TEST cases
+		/*printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
+		lightChase(50); //Runs function lightChase with a 50ms delay before switching each light.*/
 
 	}
 	

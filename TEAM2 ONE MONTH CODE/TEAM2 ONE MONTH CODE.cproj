@@ -342,10 +342,38 @@
     <Folder Include="src\ASF\xmega\utils\assembler\" />
     <Folder Include="src\ASF\xmega\utils\bit_handling\" />
     <Folder Include="src\ASF\xmega\utils\preprocessor\" />
+    <Folder Include="src\Calculations\Altitude\" />
+    <Folder Include="src\Calculations\Velocity\" />
     <Folder Include="src\config\" />
     <Folder Include="src\drivers" />
+    <Folder Include="src\drivers\ADC" />
+    <Folder Include="src\drivers\Temperature" />
+    <Folder Include="src\drivers\Pressure" />
+    <Folder Include="src\drivers\uart" />
+    <Folder Include="src\drivers\timerCounter" />
+    <Folder Include="src\flightState\" />
+    <Folder Include="src\Calculations" />
+    <Folder Include="src\test\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Calculations\Altitude\getAltitude.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Calculations\Altitude\getAltitude.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Calculations\Velocity\getVelocity.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Calculations\Velocity\getVelocity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\test\testClass.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\test\testClass.h">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\asf.h">
       <SubType>compile</SubType>
     </None>
@@ -532,25 +560,37 @@
     <Compile Include="src\config\conf_usart_serial.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\ADC_init.c">
+    <Compile Include="src\drivers\ADC\ADC_init.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\ADC_init.h">
+    <Compile Include="src\drivers\ADC\ADC_init.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\testClass.c">
+    <Compile Include="src\drivers\Pressure\getPressure.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\testClass.h">
+    <Compile Include="src\drivers\Pressure\getPressure.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\timer_counter_init.c">
+    <Compile Include="src\drivers\Temperature\getTemperature.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\timer_counter_init.h">
+    <Compile Include="src\drivers\Temperature\getTemperature.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\drivers\uart_comms.c">
+    <Compile Include="src\drivers\timerCounter\timer_counter_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\timerCounter\timer_counter_init.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\uart\uart_comms.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\flightState\flightState.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\flightState\flightState.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">
