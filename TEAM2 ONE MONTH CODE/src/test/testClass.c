@@ -4,7 +4,7 @@
  * Created: 9/18/2016 6:30:09 PM
  *  Author: seanw
  */ 
- #include "Drivers/test/testClass.h"
+ #include "test/testClass.h"
  #include <asf.h>
  uint8_t lightNumber;
  float voltage;

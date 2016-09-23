@@ -5,8 +5,9 @@
  *  Author: seanw
  */ 
  #include <asf.h>
- #include "Drivers/Altitude/getAltitude.h"
- uint8_t getAltitude(uint8_t pressure,uint8_t temperature){
-	uint8_t alt = 0;
-	return alt;
+ #include "Calculations/Altitude/getAltitude.h"
+ #include "Drivers/Pressure/getPressure.h"
+ #include "Drivers/Temperature/getTemperature.h"
+ float getAltitude(void){
+	return (getTemperature() - 123)/(-.00649);
  }

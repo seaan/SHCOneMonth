@@ -5,8 +5,8 @@
 #include <asf.h> //This will mainly include behind the scene code and all header files within the config folder
 #include "Drivers/timerCounter/timer_counter_init.h"
 #include "Drivers/ADC/ADC_init.h"
-#include "Drivers/test/testClass.h"
-#include "src/flightState/flightState.h"
+#include "test/testClass.h"
+#include "flightState/flightState.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,6 @@
 //This is where you can define constants, assign names to numbers, etc
 
 #define EXAMPLE		(0xFF) //Now you can type EXAMPLE and the compiler will understand hexadecimal FF, or decimal 255
-#define INIT_ALTITUDE (getAltitude()) //Takes pressure,temperature and runs through function to find initial altitude. This is then the measure used against all other measurements.
 /* End #define Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Global Variable Section */

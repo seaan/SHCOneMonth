@@ -9,7 +9,7 @@
 #ifndef GETALTITUDE_H_
 #define GETALTITUDE_H_
 
-uint8_t getAltitude(uint8_t pressure,uint8_t temperature);
+float getAltitude(void);
 
 
 #endif /* GETALTITUDE_H_*/

@@ -8,7 +8,7 @@
 #ifndef GETTEMPERATURE_H_
 #define GETTEMPERATURE_H_
 
-float getTemperature();
+float getTemperature(void);
 
 
 

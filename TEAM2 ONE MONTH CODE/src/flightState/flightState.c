@@ -5,9 +5,9 @@
  *  Author: seanw
  */ 
  #include <asf.h>
- #include "src/flightState/flightState.h"
- #include "Drivers/Altitude/getAltitude.h"
- #include "Drivers/Velocity/getVelocity.h"
+ #include "flightState/flightState.h"
+ #include "Calculations/Altitude/getAltitude.h"
+ #include "Calculations/Velocity/getVelocity.h"
 
 
 void deployParachute(void);
@@ -16,7 +16,7 @@ void deployParachute(void);
  void flightStateZero(void){
 	//save data to eeprom.
 	//Set LED to .5Hz, 5% DC.
-	if(getAltitude(0,0) < 10) //0,0 is placeholder
+	if(getAltitude() < 10) //0,0 is placeholder
 		flightStateZero();
  }
 
@@ -24,7 +24,7 @@ void deployParachute(void);
  void flightStateOne(void){
 	//save data to eeprom.
 	//Set LED to 5Hz, 10% DC.
-	if(getAltitude(0,0) < 600) //0,0 is placeholder
+	if(getAltitude() < 600) //0,0 is placeholder
 		flightStateOne();
  }
 
@@ -35,7 +35,7 @@ void deployParachute(void);
 	//velocity calculation
 	if (getVelocity() < -70) //rough estimate for what velocity we want to deploy the parachute at
 		deployParachute();
-	if(getAltitude(0,0) > 10) //0,0 is placeholder
+	if(getAltitude() > 10) //0,0 is placeholder
 		flightStateTwo();
  }
 
