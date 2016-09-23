@@ -16,7 +16,7 @@ void deployParachute(void);
  void flightStateZero(void){
 	//save data to eeprom.
 	//Set LED to .5Hz, 5% DC.
-	if(getAltitude() < 10) //0,0 is placeholder
+	if(getAltitude() < 15) //0,0 is placeholder
 		flightStateZero();
  }
 
@@ -43,6 +43,7 @@ void deployParachute(void);
  void flightStateThree(void){
 	//save data to eeprom.
 	//Set LED to 1Hz, 10% DC.
+	//Buzzer
 	flightStateThree();
  }
 
