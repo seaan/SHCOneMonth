@@ -1,6 +1,8 @@
 -take reading from pressure sensor
--take reading from temperature sensor
--implement readings from both sensors into all getAltitude calls
+x-take reading from temperature sensor
+x-implement readings from both sensors into all getAltitude calls
 -set LEDs
 -saving data to eeprom, TC-based sample rate
 -motor TWR and pulse with modulation.
+TEST EVERYTHING!!! ALOT!!!
+Thomas is cool
