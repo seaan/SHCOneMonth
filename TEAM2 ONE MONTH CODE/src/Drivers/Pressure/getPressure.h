@@ -9,6 +9,9 @@
 #ifndef GETPRESSURE_H_
 #define GETPRESSURE_H_
 
-float getPressure(void);
+uint16_t getPressure(void);
+void spi_write(uint8_t data);
+uint8_t spi_read(void);
+
 
 #endif /* GETPRESSURE_H_ */

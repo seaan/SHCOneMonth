@@ -45,7 +45,7 @@
 }
 
 void test(void){
-	printf("%f\n",getPressure());
+	printf("%i\n",getPressure());
 	printf("%f\n",getTemperature());
 	printf("%f\n",getAltitude());
 	printf("%f\n",getVelocity());

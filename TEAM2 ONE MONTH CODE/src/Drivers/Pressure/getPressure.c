@@ -6,7 +6,12 @@
  */
  #include <asf.h>
  #include "Drivers/Pressure/getPressure.h"
- float getPressure(void){
-	 
-	 return 0;
+ #include "Drivers/SPI/SPI_driver.h"
+ uint16_t getPressure(void){
+	uint16_t data; //Temporary data variable.
+	spi_write(0x00); //Write the data to the SPI device.
+	data = ((uint16_t)spi_read())<<8; //Typecast the 8 bit data to 16 bit, then move it 8 places to the left.
+	data += ((uint16_t)spi_read()); //Assign data to data + the new data but in the lower 8 bits.
+
+	return data;
 }

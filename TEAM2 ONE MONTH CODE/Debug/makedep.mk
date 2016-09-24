@@ -6,6 +6,8 @@ src\Calculations\Altitude\getAltitude.c
 
 src\Calculations\Velocity\getVelocity.c
 
+src\drivers\SPI\SPI_driver.c
+
 src\test\testClass.c
 
 src\ASF\common\services\clock\xmega\sysclk.c

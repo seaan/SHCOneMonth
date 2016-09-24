@@ -9,6 +9,7 @@
 #include "Calculations/Altitude/getAltitude.h"
 #include "Calculations/Velocity/getVelocity.h"
 #include "conf_usart_serial.h"
+#include "Drivers/SPI/SPI_driver.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,13 +46,16 @@ int main (void)
 	sysclk_enable_peripheral_clock(&USARTC0); //For every peripheral, you must enable the clock like shown here. Ex. Timer counters, SPI, ADCs
 	sysclk_enable_peripheral_clock(&ADCA); //Analog to Digital Converter clock initialization.
 	sysclk_enable_peripheral_clock(&TCE0); //Timer Counter clock initialization
+	sysclk_enable_peripheral_clock(&SPIC); //Serial Port Interface initialization.
 	
 	/* Example, Timer Counter on PORTE */
 	
 	sysclk_enable_module(SYSCLK_PORT_E, SYSCLK_HIRES); //You must have this line for every timer counter due to a flaw in the design of the chip
+	sysclk_enable_module(SYSCLK_PORT_C,PR_SPI_bm);
 	
 	/* Initializations */;
 	UART_Comms_Init();
+	SPI_init();
 	//TCE0_init(12499,100);
 	ADC_init();
 	/* Flight Code */

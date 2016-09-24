@@ -347,6 +347,7 @@
     <Folder Include="src\config\" />
     <Folder Include="src\drivers" />
     <Folder Include="src\drivers\ADC" />
+    <Folder Include="src\drivers\SPI" />
     <Folder Include="src\drivers\Temperature" />
     <Folder Include="src\drivers\Pressure" />
     <Folder Include="src\drivers\uart" />
@@ -365,6 +366,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\Calculations\Velocity\getVelocity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\SPI\SPI_driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\SPI\SPI_driver.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\test\testClass.c">
