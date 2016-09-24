@@ -1,6 +1,5 @@
-src/Calculations/Altitude/getAltitude.d \
- src/Calculations/Altitude/getAltitude.o: \
- ../src/Calculations/Altitude/getAltitude.c ../src/asf.h \
+src/drivers/timer_counter_init.d src/drivers/timer_counter_init.o: \
+ ../src/drivers/timer_counter_init.c ../src/asf.h \
  ../src/ASF/xmega/drivers/adc/adc.h ../src/ASF/xmega/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -64,10 +63,7 @@ src/Calculations/Altitude/getAltitude.d \
  ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../src/Calculations/Altitude/getAltitude.h \
- ../src/Drivers/Pressure/getPressure.h \
- ../src/Drivers/Temperature/getTemperature.h
+ ../src/Drivers/timer_counter_init.h
 
 ../src/asf.h:
 
@@ -207,10 +203,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-../src/Calculations/Altitude/getAltitude.h:
-
-../src/Drivers/Pressure/getPressure.h:
-
-../src/Drivers/Temperature/getTemperature.h:
+../src/Drivers/timer_counter_init.h:

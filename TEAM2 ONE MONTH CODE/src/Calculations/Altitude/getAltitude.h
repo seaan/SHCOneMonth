@@ -11,5 +11,4 @@
 
 float getAltitude(void);
 
-
 #endif /* GETALTITUDE_H_*/

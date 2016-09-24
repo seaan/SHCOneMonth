@@ -62,7 +62,11 @@ src/test/testClass.d src/test/testClass.o: ../src/test/testClass.c \
  ../src/ASF/xmega/utils/status_codes.h \
  ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
- ../src/ASF/xmega/boards/xmega_a1_xplained/led.h
+ ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
+ ../src/Drivers/Pressure/getPressure.h \
+ ../src/Drivers/Temperature/getTemperature.h \
+ ../src/Calculations/Altitude/getAltitude.h \
+ ../src/Calculations/Velocity/getVelocity.h
 
 ../src/test/testClass.h:
 
@@ -203,3 +207,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/config/conf_usart_serial.h:
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
+
+../src/Drivers/Pressure/getPressure.h:
+
+../src/Drivers/Temperature/getTemperature.h:
+
+../src/Calculations/Altitude/getAltitude.h:
+
+../src/Calculations/Velocity/getVelocity.h:

@@ -44,7 +44,5 @@ src\drivers\timerCounter\timer_counter_init.c
 
 src\drivers\uart\uart_comms.c
 
-src\flightState\flightState.c
-
 src\main.c
 

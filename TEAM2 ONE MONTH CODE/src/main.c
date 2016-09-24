@@ -6,7 +6,9 @@
 #include "Drivers/timerCounter/timer_counter_init.h"
 #include "Drivers/ADC/ADC_init.h"
 #include "test/testClass.h"
-#include "flightState/flightState.h"
+#include "Calculations/Altitude/getAltitude.h"
+#include "Calculations/Velocity/getVelocity.h"
+#include "conf_usart_serial.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,13 +26,15 @@ uint8_t example = 0; //variable example, unsigned 8 bit, starts at 0
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Function Prototype Section */
 //This is where you make function prototypes
-
-void Example(void); //function called Example with no return or argument input, define below main
+void flightStateOne(void);
+void flightStateTwo(void);
+void flightStateThree(void);
+void flightStateZero(void);
+void deployParachute(void);
 /* End Function Prototype Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Interrupt Service Routine Section */
 //This is where you make ISRs when using interrupts, only some teams will use interrupts as they can be complicated
-
 /* End Interrupt Service Routine Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,22 +52,62 @@ int main (void)
 	
 	/* Initializations */;
 	UART_Comms_Init();
-	TCE0_init(12499,100);
+	//TCE0_init(12499,100);
 	ADC_init();
 	/* Flight Code */
 	PORTE.DIR = 0b11111111; //Sets all the pins on PORTE as an output.
 	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
 
 	while (1){
-		flightStateZero();
-		flightStateOne();
-		flightStateTwo();
-		flightStateThree();
+		test();
+		//flightStateZero();
+		//flightStateOne();
+		//flightStateTwo();
+		//flightStateThree();
 		
 		//Already written TEST cases
-		/*printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
-		lightChase(50); //Runs function lightChase with a 50ms delay before switching each light.*/
+		//printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
+		lightChase(100); //Runs function lightChase with a 50ms delay before switching each light.
 
 	}
 	
 }
+ //Pre-Launch
+ void flightStateZero(void){
+	 //save data to eeprom.
+	 //Set LED to .5Hz, 5% DC.
+	 if(getAltitude() < 15) //0,0 is placeholder
+	 flightStateZero();
+ }
+
+ //Ascent
+ void flightStateOne(void){
+	 //save data to eeprom.
+	 //Set LED to 5Hz, 10% DC.
+	 if(getAltitude() < 600) //0,0 is placeholder
+	 flightStateOne();
+ }
+
+ //Descent
+ void flightStateTwo(void){
+	 //save data to eeprom.
+	 //Set LED to 10Hz, 10% DC.
+	 //velocity calculation
+	 if (getVelocity() < -70) //rough estimate for what velocity we want to deploy the parachute at
+	 deployParachute();
+	 if(getAltitude() > 10) //0,0 is placeholder
+	 flightStateTwo();
+ }
+
+ //Touchdown
+ void flightStateThree(void){
+	 //save data to eeprom.
+	 //Set LED to 1Hz, 10% DC.
+	 //Buzzer
+	 flightStateThree();
+ }
+
+ void deployParachute(void){
+	 
+
+ }

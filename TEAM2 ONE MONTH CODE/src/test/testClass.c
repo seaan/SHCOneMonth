@@ -5,7 +5,11 @@
  *  Author: seanw
  */ 
  #include "test/testClass.h"
- #include <asf.h>
+ #include "Drivers/Pressure/getPressure.h"
+ #include "Drivers/Temperature/getTemperature.h"
+ #include "Calculations/Altitude/getAltitude.h"
+ #include "Calculations/Velocity/getVelocity.h"
+ 
  uint8_t lightNumber;
  float voltage;
  uint16_t adcReading;
@@ -18,7 +22,7 @@
 				delay_ms(msDelay); //Delay given time.
 			}
 
-			lightNumber = 0b1000000; //All pins on except pin 7.
+			lightNumber = 0b10000000; //All pins on except pin 7.
 			for(int i = 7; i > 3; i--){ //Cycles through pins 4-7, backwards.
 				PORTE.OUT = ~lightNumber;
 				lightNumber >>= 1; //Shifts the pin off for lightChase to the right, meaning that when ~lightChase is next taken, pin [i - 1] is on.
@@ -38,4 +42,11 @@
 	//If we hadn't multiplied by 1000, the typecast would've truncated the voltage reading to just the one's place.
 
 	delay_ms(msDelay);
+}
+
+void test(void){
+	printf("%f\n",getPressure());
+	printf("%f\n",getTemperature());
+	printf("%f\n",getAltitude());
+	printf("%f\n",getVelocity());
 }

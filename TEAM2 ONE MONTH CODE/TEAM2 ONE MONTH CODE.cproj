@@ -108,21 +108,21 @@
     </AsfFrameworkConfig>
     <preserveEEPROM>true</preserveEEPROM>
     <avrtool>com.atmel.avrdbg.tool.jtagice3plus</avrtool>
-    <avrtoolserialnumber>J30200028893</avrtoolserialnumber>
+    <avrtoolserialnumber>J30200029039</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E974C</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_jtagice3plus>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>7500000</JtagDbgClock>
+          <JtagDbgClock>7499999</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.jtagice3plus</ToolType>
-      <ToolNumber>J30200028893</ToolNumber>
+      <ToolNumber>J30200029039</ToolNumber>
       <ToolName>JTAGICE3</ToolName>
     </com_atmel_avrdbg_tool_jtagice3plus>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>7500000</avrtoolinterfaceclock>
+    <avrtoolinterfaceclock>7499999</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -351,7 +351,6 @@
     <Folder Include="src\drivers\Pressure" />
     <Folder Include="src\drivers\uart" />
     <Folder Include="src\drivers\timerCounter" />
-    <Folder Include="src\flightState\" />
     <Folder Include="src\Calculations" />
     <Folder Include="src\test\" />
   </ItemGroup>
@@ -585,12 +584,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\drivers\uart\uart_comms.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\flightState\flightState.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\flightState\flightState.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">

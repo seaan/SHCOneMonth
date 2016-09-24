@@ -64,7 +64,8 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
  ../src/Drivers/timerCounter/timer_counter_init.h \
  ../src/Drivers/ADC/ADC_init.h ../src/test/testClass.h \
- ../src/flightState/flightState.h
+ ../src/Calculations/Altitude/getAltitude.h \
+ ../src/Calculations/Velocity/getVelocity.h
 
 ../src/asf.h:
 
@@ -210,4 +211,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../src/test/testClass.h:
 
-../src/flightState/flightState.h:
+../src/Calculations/Altitude/getAltitude.h:
+
+../src/Calculations/Velocity/getVelocity.h:
