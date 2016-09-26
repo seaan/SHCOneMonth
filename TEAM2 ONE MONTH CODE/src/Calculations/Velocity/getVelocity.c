@@ -8,39 +8,41 @@
  #include "Calculations/Velocity/getVelocity.h"
  #include "Calculations/Altitude/getAltitude.h"
 
- float exponentialSmoothing(float previousVel, float velocity);
+ float exponentialSmoothing(float p_smth_vel, float current_vel);
 
  //Velocity function
  float getVelocity(void){
-	float altTable[25]; //Creates an array of size 25
-	float velocityTable[25];
-	float deltaAlt;
-	float finalAlt = getAltitude(); //sets final altitude for the loop to the current altitude.
+	float arr_alt[25]; //Creates an array of size 25 for altitude.
+	float arr_vel[25]; //Velocity array.
+	float delta_alt; //Change in altitude (deltaAltitude).
+	float final_alt = getAltitude(); //sets final altitude for the loop to the current altitude.
 	for(int i = 0; i < 25; i++){ //For each element in altTable
 		delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz. 
-		altTable[i] = finalAlt - getAltitude(); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
-		finalAlt = getAltitude(); //Sets the final altitude for the iteration to the current altitude.
+		arr_alt[i] = final_alt - getAltitude(); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
+		final_alt = getAltitude(); //Sets the final altitude for the iteration to the current altitude.
 	}
+
 	//Attempt at numerical differentiation.
 	for(int z = 1; z < 25; z++){
-		velocityTable[z] = (altTable[z+1] - altTable[z-1])/.2; //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
+		arr_vel[z] = (arr_alt[z+1] - arr_alt[z-1])/.2; //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
 	}
-	velocityTable[0] = altTable[0]/.1; //Still need to get the first velocity.
-	
+
+	arr_vel[0] = arr_alt[0]/.1; //Still need to get the first velocity.
+
 	//Now we know the velocity for 25 different samples over a total of 250ms. We now need to exponentially smooth the data to reduce noise again.
 
-	float smoothedVelTable[25];
-	smoothedVelTable[0] = velocityTable[0]; //Sets the initial smoothed value to the first velocity taken.
+	float a_smooth[25]; //Smoothed velocity table of size 25.
+	a_smooth[0] = arr_vel[0]; //Sets the initial smoothed value to the first velocity taken.
 	for(int j = 1; j < 25; j++){ //For our 24 elements of velocity..
-		smoothedVelTable[j] = exponentialSmoothing(smoothedVelTable[j - 1], velocityTable[j]); //For the current element of smoothed velocity, set it equal to the value that our exponential smoothing function gives us. We input the previous value for the smoothed table as our forecast/second variable, then the element of velocity at the current position. 
+		a_smooth[j] = exponentialSmoothing(a_smooth[j - 1], arr_vel[j]); //For the current element of smoothed velocity, set it equal to the value that our exponential smoothing function gives us. We input the previous value for the smoothed table as our forecast/second variable, then the element of velocity at the current position. 
 	}
-	float sumVelocity = 0; //Summed velocity so we can average it.
+	float s_vel = 0; //Summed velocity so we can average it.
 	for(int b = 1; b < 25; b++) //For our size 25 smoothed velocity table, we want to ignore the first value because it is a duplicate, then iterate through every other value.
-		sumVelocity += smoothedVelTable[b]; //Set the sum of velocity equal to itself plus the element at our current position. Sums up all of the values in our table.
-	return sumVelocity/24; //The function finally ends with returning the average, or the sum of our 24 elements of velocity divided by 24.
+		s_vel += a_smooth[b]; //Set the sum of velocity equal to itself plus the element at our current position. Sums up all of the values in our table.
+	return s_vel/24; //The function finally ends with returning the average, or the sum of our 24 elements of velocity divided by 24.
  }
 
- float exponentialSmoothing(float previousVel, float velocity){ //We need the previous smoothed value as well as the current unsmoothed value, as indicated by the equation on this page: https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_exponential_smoothing
-	float smoothingFactor = .2; //20% smoothing factor, needs to be tested.
-	return (velocity * smoothingFactor) + (previousVel * (1 - smoothingFactor)); //returns the smoothed velocity for the current position of our table! That wasn't so hard, was it?
+ float exponentialSmoothing(float p_smth_vel, float current_vel){ //We need the previous smoothed value as well as the current un-smoothed value, as indicated by the equation on this page: https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_exponential_smoothing
+	float smooth_factor = .2; //20% smoothing factor, needs to be tested.
+	return (current_vel * smooth_factor) + (p_smth_vel * (1 - smooth_factor)); //returns the smoothed velocity for the current position of our table! That wasn't so hard, was it?
  }

@@ -10,7 +10,7 @@
 #define GETVELOCITY_H_
 
 float getVelocity(void); //Velocity function
-float exponentialSmoothing(float previousVel, float velocity);
+float exponentialSmoothing(float p_smth_vel, float current_vel);
 
 
 

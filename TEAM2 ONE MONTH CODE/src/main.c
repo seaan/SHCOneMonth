@@ -76,7 +76,14 @@ int main (void)
 	}
 	
 }
- //Pre-Launch
+/*********************************************************************/
+/*
+*					FLIGHT STATE METHODS
+* Each completes a certain objective within a certain altitude, then
+*  throws to next flight state in the main while loop.
+*/
+
+ /* PRE-LAUNCH */
  void flightStateZero(void){
 	 //save data to eeprom.
 	 //Set LED to .5Hz, 5% DC.
@@ -84,7 +91,7 @@ int main (void)
 	 flightStateZero();
  }
 
- //Ascent
+ /* ASCENT */
  void flightStateOne(void){
 	 //save data to eeprom.
 	 //Set LED to 5Hz, 10% DC.
@@ -92,7 +99,7 @@ int main (void)
 	 flightStateOne();
  }
 
- //Descent
+ /* DESCENT */
  void flightStateTwo(void){
 	 //save data to eeprom.
 	 //Set LED to 10Hz, 10% DC.
@@ -103,7 +110,7 @@ int main (void)
 	 flightStateTwo();
  }
 
- //Touchdown
+ /* TOUCHDOWN */
  void flightStateThree(void){
 	 //save data to eeprom.
 	 //Set LED to 1Hz, 10% DC.
@@ -111,6 +118,7 @@ int main (void)
 	 flightStateThree();
  }
 
+/* EMERGENCY PARACHUTE DEPLOY */
  void deployParachute(void){
 	 
 
