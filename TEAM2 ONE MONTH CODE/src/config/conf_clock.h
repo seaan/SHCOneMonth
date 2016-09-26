@@ -81,4 +81,6 @@
 /* Use to enable and select RTC clock source */
 //#define CONFIG_RTC_SOURCE           SYSCLK_RTCSRC_ULP
 
+//RTC
+#define CONFIG_RTC_SOURCE			  SYSCLK_RTCSRC_ULP
 #endif /* CONF_CLOCK_H_INCLUDED */

@@ -11,7 +11,6 @@
 	SPIC.CTRL = 0b01000000; //Clock Double off, enable SPI, MSB DORD, slave mode, SPI transfer mode set to 0, prescalar set to clkper/4 (has no effect in slave mode).
 	SPIC.INTCTRL = 0b00000010; //Medium level interrupt.
  }
-
  uint8_t spi_read(void){
 	SPIC.DATA = 0xFF; //Set the data to something we know.
 	while(!(SPIC.STATUS>>7)); //Wait until new data comes in by monitoring the interrupt flag.
@@ -21,7 +20,4 @@
  void spi_write(uint8_t data){
 	SPIC.DATA = data; //Take data from function argument and write it.
 	while(!(SPIC.STATUS>>7)); //Wait until data has been sent.
- }
- void getReferencePressure(){
-	
  }
