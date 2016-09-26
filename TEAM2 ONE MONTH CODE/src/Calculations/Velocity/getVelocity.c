@@ -23,8 +23,9 @@
 	}
 	//Attempt at numerical differentiation.
 	for(int z = 1; z < 25; z++){
-		velocityTable[z] = (altTable(z+1) - altTable(z-1))/.2 //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
+		velocityTable[z] = (altTable[z+1] - altTable[z-1])/.2; //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
 	}
+	velocityTable[0] = altTable[0]/.1; //Still need to get the first velocity.
 	
 	//Now we know the velocity for 25 different samples over a total of 250ms. We now need to exponentially smooth the data to reduce noise again.
 
