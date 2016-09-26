@@ -1,5 +1,8 @@
-# SHCOneMonth
-Team 2's github repo for our One Month Project, the most updated version of the code project will be put here.
+# TEAM 2 One Month Project 2016
+Team 2's github repo for our One Month Project.
 
-Thomas is master programmer haha! Who is better than Sean.
-Chloe is da best, you n00bs. <3
+The team includes:
+  Sean Widmier, Mark Richter, Einaam Alim, An Nguyen, Thomas Salverson
+  
+Objectives of the Project:
+  
