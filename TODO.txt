@@ -6,6 +6,5 @@ x-saving data to eeprom, sample rate
 -motor TWR and pulse with modulation.
 -figure out the DORD for the SPI shifting, currently set at MSB
 -Wireless reciever (oh god)
--RTC records ms, might need to change velocity calculations to reflect that!
 TEST EVERYTHING!!! ALOT!!!
 Thomas is cool
