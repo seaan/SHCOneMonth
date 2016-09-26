@@ -110,14 +110,15 @@ int main (void)
  /* PRE-LAUNCH */
  void flightStateZero(void){
 	 LED(249999,5);//Set LED to .5Hz, 5% DC.
+	nvm_eeprom_write_byte(EP_address,0); //indicates the flight state.
 
 	 if(getAltitude() < 15){
-		if(rtc_get_time() - time > 300 ){ //Every 5 minutes, save data to eeprom
+		if(rtc_get_time() - t > 300 ){ //Every 5 minutes, save data to eeprom
 			nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
 			EP_address++;
 			
-			time = rtc_get_time();
-			nvm_eeprom_write_byte(EP_address,time);
+			t = rtc_get_time();
+			nvm_eeprom_write_byte(EP_address,t);
 			EP_address++; 
 
 			if(EP_address >= 2047) //Loops back around if we run out of addresses.
@@ -130,39 +131,40 @@ int main (void)
  /* ASCENT */
  void flightStateOne(void){
 	 LED(24999,10);//Set LED to 5Hz, 10% DC.
+	 //Hotwire!
+	 nvm_eeprom_write_byte(EP_address,1); //indicates the flight state.
 
-	 if(getAltitude() < 600){
-		 if(rtc_get_time() - time > 0.25 ){ //Every 25 seconds, save data to eeprom.
+	 while(getAltitude() < 600){
+		 if(rtc_get_time() - t > 25000 ){ //Every 25 seconds, save data to eeprom.
 			 nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
 			 EP_address++;
 			 
-			 time = rtc_get_time();
-			 nvm_eeprom_write_byte(EP_address,time);
+			 t = rtc_get_time();
+			 nvm_eeprom_write_byte(EP_address,t);
 			 EP_address++;
 
 			 if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
 		 }
-
-		 flightStateOne();
 	 }
  }
 
  /* DESCENT */
  void flightStateTwo(void){
 	 LED(12499,10);//Set LED to 10Hz, 10% DC.
+	 nvm_eeprom_write_byte(EP_address,2); //indicates the flight state.
 
 	 /* Emergency Parachute*/
 	 if (getVelocity() < -70) //rough estimate for what velocity we want to deploy the parachute at
 		deployParachute();
 	 //
 	 if(getAltitude() > 10){
-		 if(rtc_get_time() - time > 25 ){ //Every 25 seconds, save data to eeprom.
+		 if(rtc_get_time() - t > 25000 ){ //Every 25 seconds, save data to eeprom.
 			 nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
 			 EP_address++;
 			 
-			 time = rtc_get_time();
-			 nvm_eeprom_write_byte(EP_address,time);
+			 t = rtc_get_time();
+			 nvm_eeprom_write_byte(EP_address,t);
 			 EP_address++;
 
 			 if(EP_address >= 2047) //Loops back around if we run out of addresses.
@@ -177,14 +179,15 @@ int main (void)
  void flightStateThree(void){
 	 LED(124999,10)); //Set LED to 1Hz, 10% DC.
 	 buzzer(0,0)//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
+	 nvm_eeprom_write_byte(EP_address,3); //indicates the flight state.
 
 	 for(int i = 0; i < 3; i++){
-		 if(rtc_get_time() - time > 300 ){ //Every 
+		 if(rtc_get_time() - t > 30000 ){ //Every 
 			nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
 			EP_address++;
 			 
-			time = rtc_get_time();
-			nvm_eeprom_write_byte(EP_address,time);
+			t = rtc_get_time();
+			nvm_eeprom_write_byte(EP_address,t);
 			EP_address++;
 
 			if(EP_address >= 2047) //Loops back around if we run out of addresses.
