@@ -2,8 +2,9 @@
 x-take reading from temperature sensor
 x-implement readings from both sensors into all getAltitude calls
 -set LEDs
--saving data to eeprom, TC-based sample rate
+x-saving data to eeprom, sample rate
 -motor TWR and pulse with modulation.
 -figure out the DORD for the SPI shifting, currently set at MSB
+-Wireless reciever (oh god)
 TEST EVERYTHING!!! ALOT!!!
 Thomas is cool
