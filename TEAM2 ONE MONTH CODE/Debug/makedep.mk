@@ -4,6 +4,8 @@
 
 src\ASF\xmega\drivers\rtc\rtc.c
 
+src\ASF\xmega\drivers\spi\spi.c
+
 src\Calculations\Altitude\getAltitude.c
 
 src\Calculations\Velocity\getVelocity.c

@@ -27,7 +27,7 @@
 
 uint8_t example = 0; //variable example, unsigned 8 bit, starts at 0
 uint8_t EP_address = 0;
-uint16_t alt = 0;
+uint8_t alt = 0;
 uint32_t t = 0;
 /* End Global Variable Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,23 +83,19 @@ int main (void)
 	// flightStateThree();
 
 	while (1){
-		//printf("%i\n",rtc_get_time());
-		/*
+		test();
+
+		/*eeProm test*/
 		if(rtc_get_time() - t > 15){
 			t = rtc_get_time();
-			//nvm_eeprom_write_byte(EP_address,time);
-			//EP_address++;
+			nvm_eeprom_write_byte(EP_address,t);
+			EP_address++;
+
 			if(EP_address >= 2047)
 				EP_address = 0;
 		}
 		else
-			printf(nvm_eeprom_read_byte(EP_address);
-
-		*/
-		
-		/*Already written TEST cases*/
-		//printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
-		//lightChase(100); //Runs function lightChase with a 50ms delay before switching each light.
+			printf("eeProm at %i reads %i",EP_address,nvm_eeprom_read_byte(EP_address));
 
 	}
 	
@@ -116,18 +112,19 @@ int main (void)
 	LED(249999,5);//Set LED to .5Hz, 5% DC.
 	nvm_eeprom_write_byte(EP_address,0); //indicates the flight state.
 
-	 while(getAltitude() < 15){
-		if(rtc_get_time() - t > 300 ){ //Every 5 minutes, save data to eeprom
-			nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
+	 while(alt < 15){
+		if(rtc_get_time() - t > 300000 ){ //Every 5 minutes, save data to eeprom
+			nvm_eeprom_write_byte(EP_address,alt);
 			EP_address++;
-			
+
 			t = rtc_get_time();
-			nvm_eeprom_write_byte(EP_address,t);
+			nvm_eeprom_write_byte(EP_address,(uint8_t)(t*1000)); //Convert time to seconds, then typecast to 8 bit for easier storage.
 			EP_address++; 
 
 			if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
 			}
+		alt = (uint8_t)getAltitude();
 		}
  }
 
@@ -138,16 +135,17 @@ int main (void)
 
 	 while(getAltitude() < 600){
 		 if(rtc_get_time() - t > 25000 ){ //Every 25 seconds, save data to eeprom.
-			 nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
+			 nvm_eeprom_write_byte(EP_address,alt);
 			 EP_address++;
 			 
 			 t = rtc_get_time();
-			 nvm_eeprom_write_byte(EP_address,t);
+			 nvm_eeprom_write_byte(EP_address,(uint8_t)(t*1000)); //Convert time to seconds, then typecast to 8bit for easier storage.
 			 EP_address++;
 
 			 if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
 		 }
+		alt = (uint8_t)getAltitude();
 	 }
  }
 
@@ -168,16 +166,17 @@ int main (void)
 			deployParachute();
 
 		 if(rtc_get_time() - t > 25000 ){ //Every 25 seconds, save data to eeprom.
-			 nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
+			 nvm_eeprom_write_byte(EP_address,alt);
 			 EP_address++;
 			 
 			 t = rtc_get_time();
-			 nvm_eeprom_write_byte(EP_address,t);
+			 nvm_eeprom_write_byte(EP_address,(uint8_t)(t*1000)); //See above sections for explanation.
 			 EP_address++;
 
 			 if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
 		 }
+		alt = (uint8_t)getAltitude();
 	 }
  }
 
@@ -189,11 +188,11 @@ int main (void)
 
 	 for(int i = 0; i < 3; i++){
 		 if(rtc_get_time() - t > 30000 ){ //Every 
-			nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
+			nvm_eeprom_write_byte(EP_address,alt);
 			EP_address++;
 			 
 			t = rtc_get_time();
-			nvm_eeprom_write_byte(EP_address,t);
+			nvm_eeprom_write_byte(EP_address,(uint8_t)(t * 1000));
 			EP_address++;
 
 			if(EP_address >= 2047) //Loops back around if we run out of addresses.
