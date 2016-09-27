@@ -55,22 +55,32 @@ int main (void)
 	sysclk_enable_peripheral_clock(&USARTC0); //For every peripheral, you must enable the clock like shown here. Ex. Timer counters, SPI, ADCs
 	sysclk_enable_peripheral_clock(&ADCA); //Analog to Digital Converter clock initialization.
 	sysclk_enable_peripheral_clock(&TCE0); //Timer Counter clock initialization
+	sysclk_enable_peripheral_clock(&TCD0);
+	sysclk_enable_peripheral_clock(&TCC0);
 	sysclk_enable_peripheral_clock(&SPIC); //Serial Port Interface initialization.
 	
 	/* Example, Timer Counter on PORTE */
 
 	sysclk_enable_module(SYSCLK_PORT_E, SYSCLK_HIRES); //You must have this line for every timer counter due to a flaw in the design of the chip **************************
+	sysclk_enable_module(SYSCLK_PORT_D, SYSCLK_HIRES);
 	sysclk_enable_module(SYSCLK_PORT_C,PR_SPI_bm);
 	
 	/* Initializations */;
 	UART_Comms_Init();
 	SPI_init();
 	//TCE0_init(12499,100);
+	TCD0_init();
 	ADC_init();
 
+	PORTF.DIR = 0b00000011;
+
 	/* Flight Code */
-	PORTE.DIR = 0b11111111; //Sets all the pins on PORTE as an output.
-	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
+
+	/* Flight States */
+	//flightStateZero();
+	//flightStateOne();
+	//flightStateTwo();
+	// flightStateThree();
 
 	while (1){
 		//printf("%i\n",rtc_get_time());
@@ -86,12 +96,6 @@ int main (void)
 			printf(nvm_eeprom_read_byte(EP_address);
 
 		*/
-
-		/* Flight States */
-		//flightStateZero();
-		//flightStateOne();
-		//flightStateTwo();
-		// flightStateThree();
 		
 		/*Already written TEST cases*/
 		//printf("%i\n", ADC_test(250)); //Print the value that ADC_test returns, with a 250ms delay before the print.
@@ -109,10 +113,10 @@ int main (void)
 
  /* PRE-LAUNCH */
  void flightStateZero(void){
-	 LED(249999,5);//Set LED to .5Hz, 5% DC.
+	LED(249999,5);//Set LED to .5Hz, 5% DC.
 	nvm_eeprom_write_byte(EP_address,0); //indicates the flight state.
 
-	 if(getAltitude() < 15){
+	 while(getAltitude() < 15){
 		if(rtc_get_time() - t > 300 ){ //Every 5 minutes, save data to eeprom
 			nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
 			EP_address++;
@@ -124,14 +128,12 @@ int main (void)
 			if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
 			}
-		flightStateZero();
 		}
  }
 
  /* ASCENT */
  void flightStateOne(void){
 	 LED(24999,10);//Set LED to 5Hz, 10% DC.
-	 //Hotwire!
 	 nvm_eeprom_write_byte(EP_address,1); //indicates the flight state.
 
 	 while(getAltitude() < 600){
@@ -152,13 +154,19 @@ int main (void)
  /* DESCENT */
  void flightStateTwo(void){
 	 LED(12499,10);//Set LED to 10Hz, 10% DC.
+	 
+	 delay_ms(5000);
+	 PORTF.OUT = 0b00000001; //Turn balloon-line hotwire (1) on.
+	 delay_ms(5000);
+	 PORTF.OUT = 0b00000000; //Turn hotwire off.
 	 nvm_eeprom_write_byte(EP_address,2); //indicates the flight state.
 
-	 /* Emergency Parachute*/
-	 if (getVelocity() < -70) //rough estimate for what velocity we want to deploy the parachute at
-		deployParachute();
 	 //
-	 if(getAltitude() > 10){
+	 while(getAltitude() > 10){
+	  /* Emergency Parachute*/
+		if (getVelocity() < -70) //rough estimate for what velocity we want to deploy the parachute at
+			deployParachute();
+
 		 if(rtc_get_time() - t > 25000 ){ //Every 25 seconds, save data to eeprom.
 			 nvm_eeprom_write_byte(EP_address,alt); //FIX PLS, CAN ONLY SAVE 1 BYTE AT A TIME LULZ
 			 EP_address++;
@@ -170,15 +178,13 @@ int main (void)
 			 if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
 		 }
-
-		 flightStateOne();
 	 }
  }
 
  /* TOUCHDOWN */
  void flightStateThree(void){
-	 LED(124999,10)); //Set LED to 1Hz, 10% DC.
-	 buzzer(0,0)//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
+	 LED(124999,10); //Set LED to 1Hz, 10% DC.
+	 buzzer(0,0);//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
 	 nvm_eeprom_write_byte(EP_address,3); //indicates the flight state.
 
 	 for(int i = 0; i < 3; i++){
@@ -199,6 +205,7 @@ int main (void)
 
 /* EMERGENCY PARACHUTE DEPLOY */
  void deployParachute(void){
-	 
-
+	 PORTF.OUT = 0b00000010; //Turn parachute hotwire (2) on.
+	 delay_ms(5000);
+	 PORTF.OUT = 0b00000000; //Hotwire (2) off.
  }

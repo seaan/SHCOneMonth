@@ -2,9 +2,17 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\xmega\drivers\rtc\rtc.c
+
 src\Calculations\Altitude\getAltitude.c
 
 src\Calculations\Velocity\getVelocity.c
+
+src\drivers\Outputs\Buzzer\Buzzer_driver.c
+
+src\drivers\Outputs\LED\LED_driver.c
+
+src\drivers\Outputs\Motor\Motor_driver.c
 
 src\drivers\SPI\SPI_driver.c
 

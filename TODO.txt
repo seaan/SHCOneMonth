@@ -6,7 +6,8 @@ x-saving data to eeprom, sample rate
 x-motor TWR and pulse with modulation.
 -figure out the DORD for the SPI shifting, currently set at MSB
 -Wireless reciever (oh god)
--RTC changed to ms, this might cause problems with the velocity calculations
--Change ports for like everything (LED, Buzzer, Motor TC and stuff)
+x-RTC changed to ms, this might cause problems with the velocity calculations
+x-Change ports for like everything (LED, Buzzer, Motor TC and stuff)
+x-pressure sensor ports
 
 TEST EVERYTHING!!! ALOT!!!
