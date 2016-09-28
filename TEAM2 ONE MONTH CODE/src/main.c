@@ -71,7 +71,8 @@ int main (void)
 	//TCE0_init(12499,100);
 	TCD0_init();
 	ADC_init();
-
+	PORTD.DIR = 0b11111111;
+	PORTE.DIR = 0b11111111;
 	PORTF.DIR = 0b00000011;
 
 	/* Flight Code */
@@ -81,11 +82,14 @@ int main (void)
 	//flightStateOne();
 	//flightStateTwo();
 	// flightStateThree();
-
+	LED(12499,10);
+	//buzzer(124,100);
 	while (1){
+		//printf("Hello, World!");
+		//delay_ms(50);
+		//lightChase(50);
 		test();
-
-		/*eeProm test*/
+		/*eeProm test*//*
 		if(rtc_get_time() - t > 15){
 			t = rtc_get_time();
 			nvm_eeprom_write_byte(EP_address,t);
@@ -96,7 +100,7 @@ int main (void)
 		}
 		else
 			printf("eeProm at %i reads %i",EP_address,nvm_eeprom_read_byte(EP_address));
-
+		*/
 	}
 	
 }
