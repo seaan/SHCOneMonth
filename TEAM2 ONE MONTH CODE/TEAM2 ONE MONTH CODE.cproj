@@ -35,7 +35,6 @@
     <option id="xmega.drivers.adc" value="Add" config="" content-id="Atmel.ASF" />
     <option id="xmega.drivers.ioport" value="Add" config="" content-id="Atmel.ASF" />
     <option id="xmega.drivers.rtc" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="xmega.drivers.spi" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.applications.user_application" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations />
@@ -101,8 +100,6 @@
     <file path="src/ASF/xmega/drivers/rtc/rtc.c" framework="" version="3.22.0" source="xmega\drivers\rtc\rtc.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/xmega/drivers/rtc/rtc.h" framework="" version="3.22.0" source="xmega\drivers\rtc\rtc.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/Config/conf_rtc.h" framework="" version="3.22.0" source="xmega\drivers\rtc\module_config\conf_rtc.h" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/xmega/drivers/spi/spi.c" framework="" version="3.22.0" source="xmega\drivers\spi\spi.c" changed="False" content-id="Atmel.ASF" />
-    <file path="src/ASF/xmega/drivers/spi/spi.h" framework="" version="3.22.0" source="xmega\drivers\spi\spi.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.27.0/common.applications.user_application.xmega_a1_xplained/html/index.html" />
   <offline-documentation help="" />
@@ -114,14 +111,13 @@
 </framework-data>
     </AsfFrameworkConfig>
     <preserveEEPROM>true</preserveEEPROM>
-    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
-    <avrtoolserialnumber>
-    </avrtoolserialnumber>
+    <avrtool>com.atmel.avrdbg.tool.jtagice3plus</avrtool>
+    <avrtoolserialnumber>J30200029039</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E974C</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_jtagice3plus>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>0</JtagDbgClock>
+          <JtagDbgClock>7499999</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
@@ -130,18 +126,7 @@
       <ToolName>JTAGICE3</ToolName>
     </com_atmel_avrdbg_tool_jtagice3plus>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>0</avrtoolinterfaceclock>
-    <com_atmel_avrdbg_tool_simulator>
-      <ToolOptions xmlns="">
-        <InterfaceProperties>
-        </InterfaceProperties>
-        <InterfaceName>JTAG</InterfaceName>
-      </ToolOptions>
-      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
-      <ToolNumber xmlns="">
-      </ToolNumber>
-      <ToolName xmlns="">Simulator</ToolName>
-    </com_atmel_avrdbg_tool_simulator>
+    <avrtoolinterfaceclock>7499999</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -187,7 +172,6 @@
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
       <Value>../src/ASF/xmega/drivers/rtc</Value>
-      <Value>../src/ASF/xmega/drivers/spi</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -230,7 +214,6 @@
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
       <Value>../src/ASF/xmega/drivers/rtc</Value>
-      <Value>../src/ASF/xmega/drivers/spi</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
 </AvrGcc>
@@ -280,7 +263,6 @@
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
       <Value>../src/ASF/xmega/drivers/rtc</Value>
-      <Value>../src/ASF/xmega/drivers/spi</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -324,7 +306,6 @@
       <Value>../src/ASF/xmega/drivers/usart</Value>
       <Value>%24(PackRepoDir)\atmel\XMEGAA_DFP\1.0.39\include</Value>
       <Value>../src/ASF/xmega/drivers/rtc</Value>
-      <Value>../src/ASF/xmega/drivers/spi</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
   <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -365,7 +346,6 @@
     <Folder Include="src\ASF\xmega\drivers\pmic\" />
     <Folder Include="src\ASF\xmega\drivers\rtc\" />
     <Folder Include="src\ASF\xmega\drivers\sleep\" />
-    <Folder Include="src\ASF\xmega\drivers\spi\" />
     <Folder Include="src\ASF\xmega\drivers\usart\" />
     <Folder Include="src\ASF\xmega\utils\" />
     <Folder Include="src\ASF\xmega\utils\assembler\" />
@@ -395,12 +375,6 @@
     <None Include="src\ASF\xmega\drivers\rtc\rtc.h">
       <SubType>compile</SubType>
     </None>
-    <Compile Include="src\ASF\xmega\drivers\spi\spi.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <None Include="src\ASF\xmega\drivers\spi\spi.h">
-      <SubType>compile</SubType>
-    </None>
     <Compile Include="src\Calculations\Altitude\getAltitude.c">
       <SubType>compile</SubType>
     </Compile>
@@ -416,6 +390,9 @@
     <None Include="src\config\conf_rtc.h">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="src\drivers\Outputs\Buzzer\Buzzer%2520Driver.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\drivers\Outputs\Buzzer\Buzzer_driver.c">
       <SubType>compile</SubType>
     </Compile>

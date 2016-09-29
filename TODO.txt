@@ -1,4 +1,4 @@
-x-take reading from pressure sensor
+-take reading from pressure sensor
 x-take reading from temperature sensor
 x-implement readings from both sensors into all getAltitude calls
 x-set LEDs
@@ -6,9 +6,7 @@ x-saving data to eeprom, sample rate
 x-motor TWR and pulse with modulation.
 -figure out the DORD for the SPI shifting, currently set at MSB
 -Wireless reciever (oh god)
-x-RTC changed to ms, this might cause problems with the velocity calculations
-x-Change ports for like everything (LED, Buzzer, Motor TC and stuff)
-x-pressure sensor ports
-- eeProm can only read 1 byte at a time, time is 32 bit, alt is float atm
+-RTC changed to ms, this might cause problems with the velocity calculations
+-Change ports for like everything (LED, Buzzer, Motor TC and stuff)
 
 TEST EVERYTHING!!! ALOT!!!
