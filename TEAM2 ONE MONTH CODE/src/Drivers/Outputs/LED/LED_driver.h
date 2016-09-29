@@ -9,7 +9,7 @@
 #ifndef LED_DRIVER_H_
 #define LED_DRIVER_H_
 
-void LED(uint32_t period,uint8_t duty_cycle);
+void LED(uint16_t period,uint8_t duty_cycle);
 
 
 

@@ -86,9 +86,6 @@
 // From module: RTC - Real Time Counter
 #include <rtc.h>
 
-// From module: SPI - Serial Peripheral Interface
-#include <spi.h>
-
 // From module: Sleep Controller driver
 #include <sleep.h>
 

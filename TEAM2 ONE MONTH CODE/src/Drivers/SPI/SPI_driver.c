@@ -8,11 +8,8 @@
  #include <asf.h>
 
  void SPI_init(void){
-	PORTC.DIR = 0b00000000; //Set port to input.
 	SPIC.CTRL = 0b01000000; //Clock Double off, enable SPI, MSB DORD, slave mode, SPI transfer mode set to 0, prescalar set to clkper/4 (has no effect in slave mode).
-	SPIC.INTCTRL = 0b00000011; //High level interrupt.
-	PMIC.CTRL = 0b00000100; //Enable high-priority interrupts.
-	sei(); //Enable global interrupts.
+	SPIC.INTCTRL = 0b00000010; //Medium level interrupt.
  }
  uint8_t spi_read(void){
 	SPIC.DATA = 0xFF; //Set the data to something we know.
