@@ -5,7 +5,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
- C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.36\include/avr/iox128a1.h \
+ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include/avr/iox128a1.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
@@ -67,7 +67,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/Drivers/ADC/ADC_init.h ../src/test/testClass.h \
  ../src/Calculations/Altitude/getAltitude.h \
  ../src/Calculations/Velocity/getVelocity.h \
- ../src/Drivers/SPI/SPI_driver.h \
+ ../src/Drivers/Pressure/getPressure.h \
  ../src/Drivers/Outputs/Buzzer/Buzzer_Driver.h \
  ../src/Drivers/Outputs/LED/LED_driver.h \
  ../src/Drivers/Outputs/Motor/Motor_driver.h
@@ -88,7 +88,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
-C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.36\include/avr/iox128a1.h:
+C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include/avr/iox128a1.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h:
 
@@ -226,7 +226,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../src/Calculations/Velocity/getVelocity.h:
 
-../src/Drivers/SPI/SPI_driver.h:
+../src/Drivers/Pressure/getPressure.h:
 
 ../src/Drivers/Outputs/Buzzer/Buzzer_Driver.h:
 

@@ -18,19 +18,18 @@
 		
 	uint16_t read_adc = ADCA.CH0.RES; //Save the result into variable called adcReading.
 	printf("read adc: %i\n",read_adc);
-	float voltage = (0.0005*read_adc - 0.0941); //Find 
-	printf("volt: %i\n",voltage);  
+	float voltage = (0.000502512562*read_adc - 0.095979899); //Find 
+	printf("volt: %i\n",voltage*1000);  
 																/* 
 																* This converts adcReading into an actual voltage based off of slope. NEED TO TEST AND FIND THE SLOPE! voltage*1000 converts it into millivolts.
 																* If we hadn't multiplied by 1000, the typecast would've truncated the voltage reading to just the one's place.
 															    */
 
-	float resistance = (3.3*10000)/(voltage - 10000); //Need to convert our voltage reading into the resistance across the thermistor. To find this we use Rb(Vin - Vout) / Vout
-	printf("res: %i\n",resistance);
+	float resistance = (3.3*1000)/(voltage - 1000); //Need to convert our voltage reading into the resistance across the thermistor. To find this we use Rb(Vin - Vout) / Vout
+	//printf("res: %i\n",resistance);
 	
-	float a = 0.003354016; //A value for the NTCLE100E3103HT1 in the Steinhart-Hart equation (T = 1/(A + Bln(resistance) + Dln^3(resistance))
-	float b = 0.000256985; //B value.
-	float c = 0.000002620131; //C value.
-	float d = 0.00000006383091; //D value.
-	return -273.15 + 1/(a+ b*log(resistance/10000) + c*(log(resistance/10000)*log(resistance/10000)) + d*(log(resistance/10000)*log(resistance/10000)*log(resistance/10000))); //Steinhart-Hart to find temperature then return it as celsius.
+	float a_const = 0.003354016; //A value for the NTCLE100E3103HT1 in the Steinhart-Hart equation (T = 1/(A + Bln(resistance) + Dln^3(resistance))
+	float b_const = 0.000256985; //B value
+	float d_const = 0.00000006383091; //D value.
+	return 1/(a_const+ b_const*log(resistance/10000) + d_const*log(resistance/10000)*log(resistance/10000)*log(resistance/10000)) - 273.15 ; //Steinhart-Hart to find temperature then return it.
  }

@@ -6,7 +6,7 @@ src/drivers/Pressure/getPressure.d src/drivers/Pressure/getPressure.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
- C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.36\include/avr/iox128a1.h \
+ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include/avr/iox128a1.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
@@ -64,7 +64,8 @@ src/drivers/Pressure/getPressure.d src/drivers/Pressure/getPressure.o: \
  ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
- ../src/Drivers/Pressure/getPressure.h ../src/Drivers/SPI/SPI_driver.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../src/Drivers/Pressure/getPressure.h
 
 ../src/asf.h:
 
@@ -82,7 +83,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
-C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.36\include/avr/iox128a1.h:
+C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.0.39\include/avr/iox128a1.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h:
 
@@ -210,6 +211,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
 
-../src/Drivers/Pressure/getPressure.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-../src/Drivers/SPI/SPI_driver.h:
+../src/Drivers/Pressure/getPressure.h:

@@ -9,7 +9,7 @@
 #include "Calculations/Altitude/getAltitude.h"
 #include "Calculations/Velocity/getVelocity.h"
 #include "conf_usart_serial.h"
-#include "Drivers/SPI/SPI_driver.h"
+#include "Drivers/Pressure/getPressure.h"
 #include "Drivers/Outputs/Buzzer/Buzzer_Driver.h"
 #include "Drivers/Outputs/LED/LED_driver.h"
 #include "Drivers/Outputs/Motor/Motor_driver.h"
@@ -67,13 +67,15 @@ int main (void)
 	
 	/* Initializations */;
 	UART_Comms_Init();
-	SPI_init();
+	//SPI_init();
 	//TCE0_init(12499,100);
 	TCD0_init();
 	ADC_init();
 	PORTD.DIR = 0b11111111;
 	PORTE.DIR = 0b11111111;
 	PORTF.DIR = 0b00000011;
+	
+	//PORTE.OUT = 0b00000000;
 
 	/* Flight Code */
 
@@ -82,14 +84,14 @@ int main (void)
 	//flightStateOne();
 	//flightStateTwo();
 	// flightStateThree();
-	LED(12499,10);
-	//buzzer(124,100);
+	//LED(12499,100);
+	//buzzer(12,100);
 	while (1){
 		//printf("Hello, World!");
 		//delay_ms(50);
 		//lightChase(50);
 		test();
-		/*eeProm test*//*
+		/*eeProm tes t*//*
 		if(rtc_get_time() - t > 15){
 			t = rtc_get_time();
 			nvm_eeprom_write_byte(EP_address,t);
