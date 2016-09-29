@@ -67,7 +67,9 @@ src/test/testClass.d src/test/testClass.o: ../src/test/testClass.c \
  ../src/Drivers/Pressure/getPressure.h \
  ../src/Drivers/Temperature/getTemperature.h \
  ../src/Calculations/Altitude/getAltitude.h \
- ../src/Calculations/Velocity/getVelocity.h
+ ../src/Calculations/Velocity/getVelocity.h \
+ ../src/Drivers/Outputs/LED/LED_driver.h \
+ ../src/Drivers/Outputs/Buzzer/Buzzer_Driver.h
 
 ../src/test/testClass.h:
 
@@ -222,3 +224,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/Calculations/Altitude/getAltitude.h:
 
 ../src/Calculations/Velocity/getVelocity.h:
+
+../src/Drivers/Outputs/LED/LED_driver.h:
+
+../src/Drivers/Outputs/Buzzer/Buzzer_Driver.h:

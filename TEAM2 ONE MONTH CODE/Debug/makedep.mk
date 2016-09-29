@@ -16,8 +16,6 @@ src\drivers\Outputs\LED\LED_driver.c
 
 src\drivers\Outputs\Motor\Motor_driver.c
 
-src\drivers\SPI\SPI_driver.c
-
 src\test\testClass.c
 
 src\ASF\common\services\clock\xmega\sysclk.c

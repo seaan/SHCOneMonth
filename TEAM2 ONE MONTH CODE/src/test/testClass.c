@@ -9,6 +9,8 @@
  #include "Drivers/Temperature/getTemperature.h"
  #include "Calculations/Altitude/getAltitude.h"
  #include "Calculations/Velocity/getVelocity.h"
+ #include "Drivers/Outputs/LED/LED_driver.h"
+ #include "Drivers/Outputs/Buzzer/Buzzer_Driver.h"
  
  uint8_t lightNumber;
  float voltage;
@@ -46,6 +48,12 @@
 
 void test(void){
 	lightChase(100);
-	printf("For time:%i\nPressure is:%i\nTemperature is:%f\nAltitude is: %f\nAnd velocity is:%f\n",rtc_get_time(),getPressure(),getTemperature(),getAltitude(),getVelocity());
+	printf("Test:\n");
+	printf("For time:%i\n", rtc_get_time());
+	//printf("Pressure is:%i\n",getPressure());  //PRESSURE NOT WORKING
+	printf("Temperature is:%i\n",getTemperature());
+	//printf("Altitude is:%i\n",getAltitude());
+	//printf("and velocity is:%i\n",getVelocity());
+	//printf("For time:%i\nPressure is:%i\nTemperature is:%f\nAltitude is: %f\nAnd velocity is:%f\n",rtc_get_time(),getPressure(),getTemperature(),getAltitude(),getVelocity());
 	lightChase(100);
 }
