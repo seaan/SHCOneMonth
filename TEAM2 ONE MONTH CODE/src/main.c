@@ -84,14 +84,15 @@ int main (void)
 	//flightStateOne();
 	//flightStateTwo();
 	// flightStateThree();
+
 	//LED(12499,100);
 	//buzzer(12,100);
 	while (1){
-		//printf("Hello, World!");
-		//delay_ms(50);
-		//lightChase(50);
+		setup('c');
 		test();
-		/*eeProm tes t*//*
+
+		/*eeProm test*/
+	/*
 		if(rtc_get_time() - t > 15){
 			t = rtc_get_time();
 			nvm_eeprom_write_byte(EP_address,t);
@@ -102,7 +103,7 @@ int main (void)
 		}
 		else
 			printf("eeProm at %i reads %i",EP_address,nvm_eeprom_read_byte(EP_address));
-		*/
+	*/
 	}
 	
 }
@@ -189,7 +190,7 @@ int main (void)
  /* TOUCHDOWN */
  void flightStateThree(void){
 	 LED(124999,10); //Set LED to 1Hz, 10% DC.
-	 buzzer(0,0);//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
+	 buzzer(500);//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
 	 nvm_eeprom_write_byte(EP_address,3); //indicates the flight state.
 
 	 for(int i = 0; i < 3; i++){
