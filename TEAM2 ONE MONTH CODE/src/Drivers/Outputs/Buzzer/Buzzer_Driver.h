@@ -9,7 +9,11 @@
 #ifndef BUZZER_DRIVER_H_
 #define BUZZER_DRIVER_H_
 
-void buzzer(uint32_t period,uint8_t duty_cycle);
+void buzzer(uint16_t freq);
 
+/* Music methods */
+void setup(char song);
+void playMusic(int songLength, int* beats, int tempo, char* notes);
+int frequency(char note);
 
 #endif /* BUZZER_DRIVER_H_ */
