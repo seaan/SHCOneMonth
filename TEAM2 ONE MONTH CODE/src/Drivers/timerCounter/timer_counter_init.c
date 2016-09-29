@@ -13,6 +13,7 @@
 
 void TCE0_init(uint16_t period,uint8_t duty_cycle){
 	PORTE.DIR = 0b11111111;
+	PORTE.OUT = 0b00000000; //Sets all of the pins voltage levels to 0V, which is logic 0 in programming.
 	TCE0.CTRLA = 0b00000110; //0110 is prescalar 256.
 	TCE0.CTRLB = 0b11110011; //All LED outputs and Single Slope.
 	TCE0.PER = period; //THis will make the LEDs blink at 10Hz.
@@ -20,4 +21,9 @@ void TCE0_init(uint16_t period,uint8_t duty_cycle){
 	TCE0.CCB = TCE0.PER - (TCE0.PER/duty_cycle);
 	TCE0.CCC = TCE0.PER - (TCE0.PER/duty_cycle);
 	TCE0.CCD = TCE0.PER - (TCE0.PER/duty_cycle);
+}
+void TCD0_init(void){
+	PORTD.DIR = 0b11111111; //sets to output.
+	TCD0.CTRLA = 0b00000110; //0110 is prescalar 256.
+	TCD0.CTRLB = 0b10110011; //OCn output pin (currently set at 0) and single slope PWM.
 }

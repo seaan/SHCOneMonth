@@ -14,17 +14,20 @@
  float getVelocity(void){
 	float arr_alt[25]; //Creates an array of size 25 for altitude.
 	float arr_vel[25]; //Velocity array.
-	float delta_alt; //Change in altitude (deltaAltitude).
+	float arr_time[25]; //Time array
 	float final_alt = getAltitude(); //sets final altitude for the loop to the current altitude.
+	uint32_t t = 0;
 	for(int i = 0; i < 25; i++){ //For each element in altTable
 		delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz. 
 		arr_alt[i] = final_alt - getAltitude(); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
+		arr_time[i] = (rtc_get_time() - t)*1000;
 		final_alt = getAltitude(); //Sets the final altitude for the iteration to the current altitude.
+		t = rtc_get_time();
 	}
 
 	//Attempt at numerical differentiation.
 	for(int z = 1; z < 25; z++){
-		arr_vel[z] = (arr_alt[z+1] - arr_alt[z-1])/.2; //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
+		arr_vel[z] = (arr_alt[z+1] - arr_alt[z-1])/arr_time[z]; //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
 	}
 
 	arr_vel[0] = arr_alt[0]/.1; //Still need to get the first velocity.
