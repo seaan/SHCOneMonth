@@ -88,7 +88,7 @@ int main (void)
 	//LED(12499,100);
 	//buzzer(12,100);
 	while (1){
-		setup('c');
+		setup();
 		test();
 
 		/*eeProm test*/
