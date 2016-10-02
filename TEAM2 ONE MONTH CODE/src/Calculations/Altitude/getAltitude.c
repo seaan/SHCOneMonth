@@ -10,5 +10,18 @@
  #include "Drivers/Pressure/getPressure.h"
  #include "Drivers/Temperature/getTemperature.h"
  float getAltitude(void){
-	return (getTemperature()/-0.0065)*(powf(getPressure()/101325,0.190263236508483566887195756610229817256134454173664313568)-1);  //Equation found here: http://www.mide.com/pages/air-pressure-at-altitude-calculator, PRESSURE IN PASCALS, TEMP IN KELVIN.
+
+	float temperature = getTemperature();
+	float pressure = (float)getPressure();
+	float R = 287;
+	float g = 9.80665;
+	float pconst = 101325;
+
+	float alt1 = (R*temperature)/g;
+	
+	float alt2 = log(pconst/pressure);
+
+	//printf("pressure: %f\ntemperature: %f\nalt1:%f\nalt2:%f\n",pressure,temperature,alt1,alt2);
+
+	return ((R * temperature)/g)*log(pconst/pressure);  //Equation found here: https://en.wikipedia.org/wiki/Hypsometric_equation 
  }

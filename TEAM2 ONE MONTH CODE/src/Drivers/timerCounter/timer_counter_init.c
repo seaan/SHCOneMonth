@@ -27,3 +27,12 @@ void TCD0_init(void){
 	TCD0.CTRLA = 0b00000110; //0110 is prescalar 256.
 	TCD0.CTRLB = 0b10110011; //OCn output pin (currently set at 0) and single slope PWM.
 }
+
+void TCF0_init(void){
+	TCF0.CTRLA = 0b00000111; //presc 1024
+	TCF0.CTRLB = 0b00000000;
+	TCF0.CNT = 0;
+	TCF0.PER = 312; //period of 312 = ~100Hz = ~10ms before overflow
+	//TCF0.CTRLB = 0b00000000; //Command capture @ CCDEN
+	//while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until TCF0 overflows
+}

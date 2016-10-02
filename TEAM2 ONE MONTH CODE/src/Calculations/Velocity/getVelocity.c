@@ -12,25 +12,29 @@
 
  //Velocity function
  float getVelocity(void){
+	float perms = 3.1249523;	
 	float arr_alt[25]; //Creates an array of size 25 for altitude.
 	float arr_vel[25]; //Velocity array.
-	float arr_time[25]; //Time array
+	float arr_time[25]; //time array
+	while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until interrupt is done.
 	float final_alt = getAltitude(); //sets final altitude for the loop to the current altitude.
-	uint32_t t = 0;
 	for(int i = 0; i < 25; i++){ //For each element in altTable
-		delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz. 
+		while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until TCF0 overflows, which will take 10ms
+		
+		//delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz. 
 		arr_alt[i] = final_alt - getAltitude(); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
-		arr_time[i] = (rtc_get_time() - t)*1000;
+
+		arr_time[i] = TCF0.CNT/perms + 10; //time element array is one ahead so we can record the change in time + 10ms for the timer counter.
+		
 		final_alt = getAltitude(); //Sets the final altitude for the iteration to the current altitude.
-		t = rtc_get_time();
 	}
 
 	//Attempt at numerical differentiation.
 	for(int z = 1; z < 25; z++){
-		arr_vel[z] = (arr_alt[z+1] - arr_alt[z-1])/arr_time[z]; //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
+		arr_vel[z] = (arr_alt[z+1] - arr_alt[z-1])/(2*arr_time[z]); //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
 	}
 
-	arr_vel[0] = arr_alt[0]/.1; //Still need to get the first velocity.
+	arr_vel[0] = arr_alt[0]/(arr_time[0] + 10); //Still need to get the first velocity, time was missing ~10ms.
 
 	//Now we know the velocity for 25 different samples over a total of 250ms. We now need to exponentially smooth the data to reduce noise again.
 

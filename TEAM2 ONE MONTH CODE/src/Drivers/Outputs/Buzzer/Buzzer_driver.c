@@ -9,10 +9,11 @@
  #include "Drivers/Outputs/LED/LED_driver.h"
 
  /* Buzzer method for 668-1468-ND Buzzer */
- void buzzer(uint16_t freq){
+ void buzzer(uint16_t period){
+	TCD0.CTRLA = 0b00000110; //prescalar 256
 	 PORTD.OUT |= 0b00001000; //out, high = 1, low = 0.
 
-	 uint32_t period = 32000000/(256*freq)-1;
+	 //uint32_t period = 32000000/(256*freq)-1;
 
 	 TCD0.PER = period; //Set period of output.
 	 TCD0.CCD = TCD0.PER;	//Set duty cycle of output for Command Capture register A.
@@ -38,7 +39,7 @@
  //int introTempo;
  //int tempo; //how fast to play the song. To make the song play faster, decrease this value.
 
- /* Camptown Races */
+ /* Camptown Races *//*
  int introSongLength = 18;
  int songLength = 46;
  
@@ -63,8 +64,8 @@
 
  int introTempo = ;
  int tempo = ;
- */
- void setup(char song) {
+ *//*
+ void setup() {
 
 	 playMusic(introSongLength,introBeats,introTempo,introNotes); //intro
 	 delay_ms(500);
@@ -108,7 +109,7 @@
 	  * If you want add more notes, you'll need to use unique characters.
 	  *  
 		For the "char" (character) type, we put single in single quotes.
-	  */
+	  *//*
 
 	 char names[] = { 'g', 'a', 'b', 'c', 'd', 'e', 'f', 'G', 'A', 'B', 'C' };
 	 int frequencies[] = {196, 220, 247, 262, 294, 330, 349, 392, 440, 494, 523};
@@ -122,3 +123,4 @@
 	 }
 	 return 0;
 }
+*/
