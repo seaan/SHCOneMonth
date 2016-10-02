@@ -11,6 +11,8 @@
  #include <asf.h>
  #include "Calculations/Velocity/getVelocity.h"
  #include "Calculations/Altitude/getAltitude.h"
+ #include "Drivers/Pressure/getPressure.h"
+ #include "Drivers/Temperature/getTemperature.h"
 
  /* Global Variable Declarations */
 

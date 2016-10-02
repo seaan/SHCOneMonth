@@ -66,7 +66,9 @@ src/Calculations/Velocity/getVelocity.d \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
  ../src/Calculations/Velocity/getVelocity.h \
- ../src/Calculations/Altitude/getAltitude.h
+ ../src/Calculations/Altitude/getAltitude.h \
+ ../src/Drivers/Pressure/getPressure.h \
+ ../src/Drivers/Temperature/getTemperature.h
 
 ../src/asf.h:
 
@@ -215,3 +217,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/Calculations/Velocity/getVelocity.h:
 
 ../src/Calculations/Altitude/getAltitude.h:
+
+../src/Drivers/Pressure/getPressure.h:
+
+../src/Drivers/Temperature/getTemperature.h:

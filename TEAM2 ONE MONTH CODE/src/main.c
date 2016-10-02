@@ -8,21 +8,13 @@
 
 /* Includes */
 #include <asf.h>
-#include "Drivers/timerCounter/timer_counter_init.h"
-#include "Drivers/ADC/ADC_init.h"
 #include "test/testClass.h"
-#include "Calculations/Altitude/getAltitude.h"
-#include "Calculations/Velocity/getVelocity.h"
-#include "conf_usart_serial.h"
-#include "Drivers/Pressure/getPressure.h"
-#include "Drivers/Outputs/Buzzer/Buzzer_Driver.h"
-#include "Drivers/Outputs/LED/LED_driver.h"
-#include "Drivers/Outputs/Motor/Motor_driver.h"
+#include "Calculations/calculations.h"
+#include "Drivers/drivers.h"
 
 /* Defines */
 
  /* Global Variable Declarations */
-uint8_t EP_address;
 float alt;
 float initAlt;
 float t;
@@ -63,7 +55,6 @@ int main (void)
 	ADC_init();
 
 	/* Variable Initializations */
-	EP_address = 0;
 	alt = 0;
 	t = 0;
 	initAlt = 0;
@@ -77,13 +68,8 @@ int main (void)
 	delay_s(5);
 	initAlt = (float)getAltitude(getPressure(),getTemperature()); //typecast to float cause we don't want to mess stuff up.
 
-	/* Code to read saved eeProm data */
-	/*	
-	for(int i = 0; i < 2047; i++){
-		printf("eeprom at %i reads %i\n",EP_address,nvm_eeprom_read_byte(EP_address));
-		EP_address++;
-		delay_ms(250);
-	}
+/*	//If you want to read EEPROM, uncomment this!//
+	readfullEEPROM();
 */	
 
 	/* FLIGHT CODE */
@@ -102,16 +88,12 @@ int main (void)
 	TCD0.CTRLA = 0b00000111; //prescalar 1024
 	LED(62500,5);//Set LED to .5Hz, 5% DC.
 
-	nvm_eeprom_write_byte(EP_address,0); //indicates the flight state.
-	EP_address++;
-
 	alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude before we enter the while loop
 	while(alt < 20){ //until we reach target altitude
 		delay_ms(50); //delay 50ms so we don't trip over our own shoelaces.
 		alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude
 	}
-		nvm_eeprom_write_byte(EP_address,(uint8_t)(alt/3.28084)); //write the altitude (in meters) that caused us to exit flight state 0.
-		EP_address++;
+		writeEEPROM((uint8_t)(alt/3.28084)); //write the altitude (in meters) that caused us to exit flight state 0.
  }
 
  /* ASCENT (FS1) */
@@ -119,20 +101,16 @@ int main (void)
 	TCD0.CTRLA = 0b00000111; //prescalar 1024
 	LED(24999,10);//Set LED to 5Hz, 10% DC.
 
-	nvm_eeprom_write_byte(EP_address,1); //indicates the flight state.
+	writeEEPROM(1); //indicates the flight state.
 
 	alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude before we enter the while loop
 	while(alt < 600){
-		nvm_eeprom_write_byte(EP_address,(uint8_t)(alt/3.28084)); //save our altitude (in meters)
-		EP_address++;
-		if(EP_address >= 2047) //Loops back around if we run out of addresses.
-			EP_address = 0;
+		writeEEPROM((uint8_t)(alt/3.28084)); //save our altitude (in meters)
 
 		delay_ms(250); //Find & save data every quarter sec.			
 		alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude
 	 }
-	 nvm_eeprom_write_byte(EP_address,(uint8_t)(alt/3.28084)); //save the altitude (in meters) that caused us to exit flight state 1.
-	 EP_address++;
+	 writeEEPROM((uint8_t)(alt/3.28084)); //save the altitude (in meters) that caused us to exit flight state 1.
  }
 
  /* DESCENT (FS2) */
@@ -146,14 +124,11 @@ int main (void)
 	delay_ms(1000); //hotwire is on 1 second
 	PORTF.OUT = 0b00000000; //hotwire off.
 
-	nvm_eeprom_write_byte(EP_address,2); //indicates the flight state.
+	writeEEPROM(2); //indicates the flight state.
 
 	alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude before we enter the while loop
 	while(alt < 15){
-		nvm_eeprom_write_byte(EP_address,(uint8_t)(alt/3.28084)); //save our altitude (in meters)
-		EP_address++;
-		if(EP_address >= 2047) //Loops back around if we run out of addresses.
-			EP_address = 0;
+		writeEEPROM((uint8_t)(alt/3.28084)); //save our altitude (in meters)
 
 		delay_ms(250); //Find & save data every quarter sec.
 		if (getVelocity(getAltitude(getPressure(), getTemperature()), alt) < -24.384) //rough estimate for what velocity we want to deploy the parachute at
@@ -161,8 +136,7 @@ int main (void)
 		alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude
 	}
 	//turn motor off
-	nvm_eeprom_write_byte(EP_address,(uint8_t)(alt/3.28084)); //save the altitude (in meters) that caused us to exit flight state 2.
-	EP_address++;
+	writeEEPROM((uint8_t)(alt/3.28084)); //save the altitude (in meters) that caused us to exit flight state 2.
  }
 
  /* TOUCHDOWN (FS3) */
@@ -171,15 +145,12 @@ int main (void)
 	LED(31250,10); //Set LED to 1Hz, 10% DC.
 	buzzer(124);//buzzer @ period of 124
 
-	nvm_eeprom_write_byte(EP_address,3); //indicates the flight state.
+	writeEEPROM(3); //indicates the flight state.
 
 	alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude before we enter the for loop
 	for(int i = 0; i < 3; i++){ //save data only three times, this flight state is kinda boring.
-		nvm_eeprom_write_byte(EP_address,(uint8_t)(alt/3.28084));
-		EP_address++;
+		writeEEPROM((uint8_t)(alt/3.28084));
 
-		if(EP_address >= 2047) //Loops back around if we run out of addresses.
-			EP_address = 0;
 		delay_ms(300000); //Save data every 5 minutes.
 		alt = (float)getAltitude(getPressure(),getTemperature()) - initAlt;; //find our altitude
 	}

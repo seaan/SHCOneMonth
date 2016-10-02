@@ -1,4 +1,5 @@
-src/main.d src/main.o: ../src/main.c ../src/asf.h \
+src/drivers/EEPROM/EEPROM_driver.d src/drivers/EEPROM/EEPROM_driver.o: \
+ ../src/drivers/EEPROM/EEPROM_driver.c ../src/asf.h \
  ../src/ASF/xmega/drivers/adc/adc.h ../src/ASF/xmega/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -62,17 +63,8 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/common/services/serial/serial.h \
  ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
- ../src/ASF/xmega/boards/xmega_a1_xplained/led.h ../src/test/testClass.h \
- ../src/Calculations/calculations.h \
- ../src/Calculations/Altitude/getAltitude.h \
- ../src/Calculations/Velocity/getVelocity.h ../src/Drivers/drivers.h \
- ../src/Drivers/ADC/ADC_init.h ../src/Drivers/EEPROM/EEPROM_driver.h \
- ../src/Drivers/Outputs/Buzzer/Buzzer_Driver.h \
- ../src/Drivers/Outputs/LED/LED_driver.h \
- ../src/Drivers/Outputs/Motor/Motor_driver.h \
- ../src/Drivers/Pressure/getPressure.h \
- ../src/Drivers/Temperature/getTemperature.h \
- ../src/Drivers/timerCounter/timer_counter_init.h
+ ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
+ ../src/Drivers/EEPROM/EEPROM_driver.h
 
 ../src/asf.h:
 
@@ -218,28 +210,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
 
-../src/test/testClass.h:
-
-../src/Calculations/calculations.h:
-
-../src/Calculations/Altitude/getAltitude.h:
-
-../src/Calculations/Velocity/getVelocity.h:
-
-../src/Drivers/drivers.h:
-
-../src/Drivers/ADC/ADC_init.h:
-
 ../src/Drivers/EEPROM/EEPROM_driver.h:
-
-../src/Drivers/Outputs/Buzzer/Buzzer_Driver.h:
-
-../src/Drivers/Outputs/LED/LED_driver.h:
-
-../src/Drivers/Outputs/Motor/Motor_driver.h:
-
-../src/Drivers/Pressure/getPressure.h:
-
-../src/Drivers/Temperature/getTemperature.h:
-
-../src/Drivers/timerCounter/timer_counter_init.h:

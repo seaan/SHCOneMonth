@@ -400,6 +400,7 @@
     <Folder Include="src\config\" />
     <Folder Include="src\drivers" />
     <Folder Include="src\drivers\ADC" />
+    <Folder Include="src\drivers\EEPROM" />
     <Folder Include="src\drivers\Outputs" />
     <Folder Include="src\drivers\Outputs\LED" />
     <Folder Include="src\drivers\Outputs\Buzzer" />
@@ -430,6 +431,9 @@
     <Compile Include="src\Calculations\Altitude\getAltitude.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\Calculations\calculations.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\Calculations\Velocity\getVelocity.c">
       <SubType>compile</SubType>
     </Compile>
@@ -439,6 +443,15 @@
     <None Include="src\config\conf_rtc.h">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="src\drivers\drivers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\EEPROM\EEPROM_driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\drivers\EEPROM\EEPROM_driver.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\drivers\Outputs\Buzzer\Buzzer_driver.c">
       <SubType>compile</SubType>
     </Compile>

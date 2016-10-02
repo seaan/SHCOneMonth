@@ -10,6 +10,8 @@ src\Calculations\Altitude\getAltitude.c
 
 src\Calculations\Velocity\getVelocity.c
 
+src\drivers\EEPROM\EEPROM_driver.c
+
 src\drivers\Outputs\Buzzer\Buzzer_driver.c
 
 src\drivers\Outputs\LED\LED_driver.c
