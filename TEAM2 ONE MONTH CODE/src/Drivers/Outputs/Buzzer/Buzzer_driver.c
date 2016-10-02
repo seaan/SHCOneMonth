@@ -1,28 +1,32 @@
 /*
- * Buzzer_driver.c
+ * Buzzer_Driver.c
  *
- * Created: 9/25/2016 9:15:45 PM
+ * Class to hold buzzer methods, used to activate a 668-1468-ND Buzzer.
+ *
  *  Author: seanw
- */ 
+ */
+
+ /* Includes */
  #include <asf.h>
  #include "Drivers/Outputs/Buzzer/Buzzer_Driver.h"
- #include "Drivers/Outputs/LED/LED_driver.h"
 
- /* Buzzer method for 668-1468-ND Buzzer */
+ /* Global Variable Declarations */
+
+ /*******************************************************************************************/
+							/* Simple Buzzer methods */
+
+ /* Buzzer method to start buzzer @ a certain period. */
  void buzzer(uint16_t period){
 	TCD0.CTRLA = 0b00000110; //prescalar 256
 	 PORTD.OUT |= 0b00001000; //out, high = 1, low = 0.
-
-	 //uint32_t period = 32000000/(256*freq)-1;
 
 	 TCD0.PER = period; //Set period of output.
 	 TCD0.CCD = TCD0.PER;	//Set duty cycle of output for Command Capture register A.
  }
 
 
- /*PLAYING MUSIC LOL*/
- //////////////////////
- 
+ /*******************************************************************************************/
+ 						/* Music methods for testing*/ 
  /* Length of Song in no. of notes & rests*/
  //int introSongLength;
  //int songLength;
@@ -51,7 +55,7 @@
 
  int introTempo = 150;
  int tempo = 200;
-
+ */
  /*Mario*//*
  int introSongLength = ;
  int songLength = ;
@@ -65,7 +69,7 @@
  int introTempo = ;
  int tempo = ;
  *//*
- void setup() {
+ void music() {
 
 	 playMusic(introSongLength,introBeats,introTempo,introNotes); //intro
 	 delay_ms(500);
@@ -104,7 +108,7 @@
 	 int i;
 	 const int numNotes = 11;  // number of notes we're storing
 
-	 /* The following arrays hold the note characters and corresponding frequencies. 
+	  * The following arrays hold the note characters and corresponding frequencies. 
 	  * The last "C" note is  to separate it from the first lowercase "c". 
 	  * If you want add more notes, you'll need to use unique characters.
 	  *  

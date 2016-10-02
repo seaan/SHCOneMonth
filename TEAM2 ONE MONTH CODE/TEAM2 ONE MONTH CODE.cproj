@@ -404,7 +404,6 @@
     <Folder Include="src\drivers\Outputs\LED" />
     <Folder Include="src\drivers\Outputs\Buzzer" />
     <Folder Include="src\drivers\Outputs\Motor" />
-    <Folder Include="src\drivers\SPI" />
     <Folder Include="src\drivers\Temperature" />
     <Folder Include="src\drivers\Pressure" />
     <Folder Include="src\drivers\uart" />

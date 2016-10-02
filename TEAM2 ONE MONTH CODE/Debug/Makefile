@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-
+SHELL := cmd.exe
 RM := rm -rf
 
 USER_OBJS :=
@@ -81,7 +81,6 @@ SUBDIRS :=  \
 ../src/drivers/Outputs/LED \
 ../src/drivers/Outputs/Buzzer \
 ../src/drivers/Outputs/Motor \
-../src/drivers/SPI \
 ../src/drivers/Temperature \
 ../src/drivers/Pressure \
 ../src/drivers/uart \

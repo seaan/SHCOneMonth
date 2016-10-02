@@ -1,16 +1,19 @@
 /*
- * usart_comms.c
+ * uart_comms.c
  *
- * Created: 8/18/2015 12:16:38 PM
+ * Class to hold functions that can be called during initialization of the MCU to start the uart communications
+ *
  *  Author: abower
- */ 
-
-/* This driver contains functions that can be called during initialization of the MCU
-   to start the uart communications */
-
+ */
+ /* Includes */
 #include "conf_usart_serial.h" //Includes the information in the config file
 #include <asf.h>
 
+/* Global Variables */
+
+ /*******************************************************************************************/
+								/* Initialization methods */
+/* Method to initialize UART communications */
 void UART_Comms_Init(void){
 	//Struct that contains the settings from config file
 	static usart_serial_options_t usart_options = {
