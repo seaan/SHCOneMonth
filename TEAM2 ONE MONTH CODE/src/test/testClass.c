@@ -49,9 +49,9 @@
 void test(void){
 	lightChase(100);
 	printf("Test:\n");
-	printf("Pressure is:%li\n",getPressure());
-	printf("Temperature is:%.2f\n",getTemperature());
-	printf("Altitude is:%.2f\n",getAltitude());
-	printf("and velocity is:%.2f\n",getVelocity());
+	//printf("Pressure is:%li\n",getPressure());
+	//printf("Temperature is:%.2f\n",getTemperature());
+	//printf("Altitude is:%.2f\n",getAltitude()*3.28084);
+	//printf("and velocity is:%.2f\n",getVelocity());
 	//printf("For time:%i\nPressure is:%i\nTemperature is:%f\nAltitude is: %f\nAnd velocity is:%f\n",rtc_get_time(),getPressure(),getTemperature(),getAltitude(),getVelocity());
 }

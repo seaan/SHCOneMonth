@@ -1,14 +1,69 @@
-x-take reading from pressure sensor
-x-take reading from temperature sensor
-x-implement readings from both sensors into all getAltitude calls
-x-set LEDs
-x-saving data to eeprom, sample rate
-x-motor TWR and pulse with modulation.
--figure out the DORD for the SPI shifting, currently set at MSB
--Wireless reciever (oh god)
-x-RTC changed to ms, this might cause problems with the velocity calculations
-x-Change ports for like everything (LED, Buzzer, Motor TC and stuff)
-x-pressure sensor ports
-- eeProm can only read 1 byte at a time, time is 32 bit, alt is float atm
+-EEPROM
+x--Write
+x--Test w/ time
+x--Rewrite
+x--Retest
+x--Test w/ alt
+x--Rewrite
+x--Retest
+DONE
 
-TEST EVERYTHING!!! ALOT!!!
+-PRESSURE
+x--Write
+x--Test
+x--Rewrite
+x--Retest
+DONE 	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaawwwww yeah
+
+
+-TEMPERATURE
+x--Write
+x--Test
+x--Rewrite
+x--Retest
+DONE
+
+
+-ALTITUDE
+x--Write
+x--Test
+x--Rewrite
+x--Retest
+DONE
+
+-VELOCITY
+x--Write
+x--Test
+x--Rewrite
+x--Retest
+--Rewrite
+--Retest
+
+-LED
+x--Write
+x--Test
+x--Rewrite
+X--Retest
+DONE
+
+-BUZZER
+x--Write
+x--Test
+x--Rewrite
+X--Retest
+DONE
+
+-MOTOR
+x--Write
+--Test
+--Rewrite
+--Retest
+
+TURN THEM OFF WHEN YOU DEPLOY PARACHUTE
+
+
+-HOTWIRES
+x--Write
+X--Test
+X--Rewrite
+--Retest

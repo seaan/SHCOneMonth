@@ -27,8 +27,10 @@
 
 uint8_t example = 0; //variable example, unsigned 8 bit, starts at 0
 uint8_t EP_address = 0;
-uint8_t alt = 0;
+uint16_t alt = 0;
+uint16_t initAlt = 0;
 float t = 0;
+uint8_t deployedParachute = 1;
 /* End Global Variable Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Begin Function Prototype Section */
@@ -85,18 +87,62 @@ int main (void)
 	PORTF.DIR = 0b00000011;
 	
 	PORTE.OUT = 0b00000000;
-
+	
+	//LED(62500,5);//Set LED to .5Hz, 5% DC.
+	delay_ms(5000);
+	initAlt = getAltitude();
+	//printf("%u\n",initAlt);
 	/* Flight Code */
-
+	//READ eePROM
+/*	
+	for(int i = 0; i < 2047; i++){
+		printf("eeprom at %i reads %i\n",EP_address,nvm_eeprom_read_byte(EP_address));
+		EP_address++;
+		delay_ms(250);
+	}
+*/	
 	/* Flight States */
-	//flightStateZero();
-	//flightStateOne();
-	//flightStateTwo();
-	// flightStateThree();
+	printf("Start\n");
+	//LED(62500,5);//Set LED to .5Hz, 5% DC.
+	printf("FLIGHT STATE: 0\n");
+	flightStateZero();
+	printf("FLIGHT STATE: 1\n");
+	flightStateOne();
+	printf("FLIGHT STATE: 2\n");
+	flightStateTwo();
+	printf("FLIGHT STATE: 3\n");
+	flightStateThree();
 
-	LED(12499,100);
+	
+/*	PORTF.OUT = 0b00000010; //Turn parachute hotwire (2) on.
+	delay_ms(1000);
+	PORTF.OUT = 0b00000000; //Hotwire (2) off.
+	*/
+	
+	/*delay_ms(5000);
+	PORTF.OUT = 0b00000001; //Turn balloon-line hotwire (1) on.
+	delay_ms(1000);
+	PORTF.OUT = 0b00000000; //Turn hotwire off.
+	*/
 	//buzzer(12);
 	while (1){
+	/*
+		TCD0.CTRLA = 0b00000111; //prescalar 1024
+		printf("FLIGHT STATE 0\n");
+		LED(62500,5);//Set LED to .5Hz, 5% DC.
+		delay_ms(10000);
+		printf("FLIGHT STATE 1\n");
+		TCD0.CTRLA = 0b00000111; //prescalar 1024
+		LED(24999,10);//Set LED to 5Hz, 10% DC.
+		delay_ms(10000);
+		printf("FLIGHT STATE 2\n");
+		LED(12499,10);//Set LED to 10Hz, 10% DC.
+		delay_ms(10000);
+		printf("FLIGHT STATE 3\n");
+		TCD0.CTRLA = 0b00000111; //prescalar 1024
+		LED(31250,10); //Set LED to 1Hz, 10% DC.
+		delay_ms(30000);
+	*/	
 		//t = TCF0.CNT/3.1249523;
 		//printf("%.2f\n",t);
 		//delay_ms(10);
@@ -105,7 +151,7 @@ int main (void)
 		//while (TCF0.CNT != TCF0.PER); //wait until TCF0 overflows
 		//printf("overflow\n");
 		
-		test();
+		//test();
 		//lightChase(50);
 
 		/*eeProm test*//*
@@ -132,77 +178,86 @@ int main (void)
 
  /* PRE-LAUNCH */
  void flightStateZero(void){
+	//printf("FLIGHT STATE: 0\n");
 	TCD0.CTRLA = 0b00000111; //prescalar 1024
 	LED(62500,5);//Set LED to .5Hz, 5% DC.
 	nvm_eeprom_write_byte(EP_address,0); //indicates the flight state.
-
-	 while(alt < 15){
+	EP_address++;
+	alt = getAltitude();
+	//for(int i = 0; i < 3; i++){
+	 while((float)alt - (float)initAlt < 35.052){
+		alt = getAltitude();
+		printf("%u\n",alt);
+	}
 		nvm_eeprom_write_byte(EP_address,alt);
 		EP_address++;
-		delay_ms(300000); //Save data every 5 minutes.
-
-			if(EP_address >= 2047) //Loops back around if we run out of addresses.
-				EP_address = 0;
-		alt = (uint8_t)getAltitude();
-		}
  }
 
  /* ASCENT */
  void flightStateOne(void){
-	TCD0.CTRLA = 0b00000110; //prescalar 256
+	//printf("FLIGHT STATE 1\n");
+	TCD0.CTRLA = 0b00000111; //prescalar 1024
 	 LED(24999,10);//Set LED to 5Hz, 10% DC.
 	 nvm_eeprom_write_byte(EP_address,1); //indicates the flight state.
-
-	 while(getAltitude() < 600){
+	 
+	 alt = getAltitude();
+	 //for(int i = 0; i < 3; i++){
+	 while((float)alt - (float)initAlt < 213.36){
+		delay_ms(250); //Save data every quarter sec.
 		nvm_eeprom_write_byte(EP_address,alt);
 		EP_address++;
-		delay_ms(250); //Save data every quarter sec.
 
 			 if(EP_address >= 2047) //Loops back around if we run out of addresses.
-				EP_address = 0;
-		alt = (uint8_t)getAltitude();
+					EP_address = 0;
+					
+		alt = getAltitude();
+		printf("%u\n",alt);
 	 }
  }
 
  /* DESCENT */
  void flightStateTwo(void){
+	//printf("FLIGHT STATE 2\n");
 	TCD0.CTRLA = 0b00000110; //prescalar 256
 	 LED(12499,10);//Set LED to 10Hz, 10% DC.
 	 motor(12499);
 
-	 delay_ms(5000);
-	 PORTF.OUT = 0b00000001; //Turn balloon-line hotwire (1) on.
-	 delay_ms(3000);
+/*	 delay_ms(5000);
+	 PORTF.OUT = 0b00000010; //Turn balloon-line hotwire (1) on.
+	 delay_ms(2000);
 	 PORTF.OUT = 0b00000000; //Turn hotwire off.
 	 nvm_eeprom_write_byte(EP_address,2); //indicates the flight state.
-
-	 //
-	 while(getAltitude() > 10){
+*/
+	 alt = getAltitude();
+	 //for(int i = 0; i < 3; i++){
+	 while((float)alt - (float)initAlt  > 33.528){
 	  /* Emergency Parachute*/
 		if (getVelocity() < -24.384) //rough estimate for what velocity we want to deploy the parachute at
 			deployParachute();
 
 		nvm_eeprom_write_byte(EP_address,alt);
 		EP_address++;
-		delay_ms(250); //Save data every quarter sec.
 
 			if(EP_address >= 2047) //Loops back around if we run out of addresses.
 				EP_address = 0;
-		alt = (uint8_t)getAltitude();
+				
+		alt = getAltitude();
+		printf("%u\n",alt);
 	 }
  }
 
  /* TOUCHDOWN */
  void flightStateThree(void){
+	//printf("FLIGHT STATE 3\n");
 	TCD0.CTRLA = 0b00000111; //prescalar 1024
 	 LED(31250,10); //Set LED to 1Hz, 10% DC.
-	 buzzer(500);//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
+	 buzzer(124);//Buzzer @ Hz, DC **********0,0 placeholder, need real values. 
 	 nvm_eeprom_write_byte(EP_address,3); //indicates the flight state.
 
 	 for(int i = 0; i < 3; i++){
 		 nvm_eeprom_write_byte(EP_address,alt);
 		 EP_address++;
-		 delay_ms(3000); //Save data every 5 minutes.
+		 delay_ms(300000); //Save data every 5 minutes.
 
 		 if(EP_address >= 2047) //Loops back around if we run out of addresses.
 			EP_address = 0;
@@ -212,7 +267,10 @@ int main (void)
 
 /* EMERGENCY PARACHUTE DEPLOY */
  void deployParachute(void){
-	 PORTF.OUT = 0b00000010; //Turn parachute hotwire (2) on.
-	 delay_ms(300000);
-	 PORTF.OUT = 0b00000000; //Hotwire (2) off.
+	 if(deployedParachute){
+		 PORTF.OUT = 0b00000001; //Turn parachute hotwire (2) on.
+		 delay_ms(2000);
+		 PORTF.OUT = 0b00000000; //Hotwire (2) off.
+		 deployedParachute = 0;
+	 }
  }
