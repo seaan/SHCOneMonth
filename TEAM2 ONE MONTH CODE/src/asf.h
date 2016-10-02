@@ -102,9 +102,6 @@
 // From module: System Clock Control - XMEGA A1/A3/A3B/A4/D/E implementation
 #include <sysclk.h>
 
-// From module: TC - Timer Counter
-#include <tc.h>
-
 // From module: USART - Serial interface - XMEGA implementation
 #include <serial.h>
 

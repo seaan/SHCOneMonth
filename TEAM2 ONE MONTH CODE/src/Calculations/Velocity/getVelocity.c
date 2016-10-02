@@ -16,10 +16,10 @@
 	float arr_alt[25]; //Creates an array of size 25 for altitude.
 	float arr_vel[25]; //Velocity array.
 	float arr_time[25]; //time array
-	while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until interrupt is done.
+	while (TCF0.CNT != TCF0.PER); //wait until interrupt is done.
 	float final_alt = getAltitude(); //sets final altitude for the loop to the current altitude.
 	for(int i = 0; i < 25; i++){ //For each element in altTable
-		while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until TCF0 overflows, which will take 10ms
+		while (TCF0.CNT != TCF0.PER); //wait until TCF0 overflows, which will take 10ms
 		
 		//delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz. 
 		arr_alt[i] = final_alt - getAltitude(); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
@@ -50,6 +50,6 @@
  }
 
  float exponentialSmoothing(float p_smth_vel, float current_vel){ //We need the previous smoothed value as well as the current un-smoothed value, as indicated by the equation on this page: https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_exponential_smoothing
-	float smooth_factor = .2; //20% smoothing factor, needs to be tested.
+	float smooth_factor = .5; //50% smoothing factor, needs to be tested.
 	return (current_vel * smooth_factor) + (p_smth_vel * (1 - smooth_factor)); //returns the smoothed velocity for the current position of our table! That wasn't so hard, was it?
  }

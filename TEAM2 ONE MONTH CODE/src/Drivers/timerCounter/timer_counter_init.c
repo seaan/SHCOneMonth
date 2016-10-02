@@ -33,6 +33,7 @@ void TCF0_init(void){
 	TCF0.CTRLB = 0b00000000;
 	TCF0.CNT = 0;
 	TCF0.PER = 312; //period of 312 = ~100Hz = ~10ms before overflow
+
 	//TCF0.CTRLB = 0b00000000; //Command capture @ CCDEN
 	//while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until TCF0 overflows
 }

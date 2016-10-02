@@ -63,7 +63,6 @@ src/drivers/Outputs/LED/LED_driver.d src/drivers/Outputs/LED/LED_driver.o: \
  ../src/ASF/common/services/serial/serial.h \
  ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
  ../src/ASF/xmega/drivers/usart/usart.h ../src/config/conf_usart_serial.h \
- ../src/ASF/xmega/drivers/tc/tc.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
  ../src/Drivers/Outputs/LED/LED_driver.h
 
@@ -208,8 +207,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/ASF/xmega/drivers/usart/usart.h:
 
 ../src/config/conf_usart_serial.h:
-
-../src/ASF/xmega/drivers/tc/tc.h:
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
 

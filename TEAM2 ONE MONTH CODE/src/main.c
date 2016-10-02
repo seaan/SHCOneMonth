@@ -13,7 +13,6 @@
 #include "Drivers/Outputs/Buzzer/Buzzer_Driver.h"
 #include "Drivers/Outputs/LED/LED_driver.h"
 #include "Drivers/Outputs/Motor/Motor_driver.h"
-#include "tc.h"
 
 /* End #include Section */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,6 +70,7 @@ int main (void)
 	/* Initializations */
 
 	UART_Comms_Init();
+	//printf("Initializing");
 	SPI_init();
 	//TCE0_init(12499,100);
 	TCD0_init();
@@ -96,15 +96,17 @@ int main (void)
 
 	LED(12499,100);
 	//buzzer(12);
-	//int i = 0;
 	while (1){
 		//t = TCF0.CNT/3.1249523;
 		//printf("%.2f\n",t);
 		//delay_ms(10);
 
 
-		//while ((TCF0.INTFLAGS<<7)!=0b10000000); //wait until TCF0 overflows
+		//while (TCF0.CNT != TCF0.PER); //wait until TCF0 overflows
+		//printf("overflow\n");
+		
 		test();
+		//lightChase(50);
 
 		/*eeProm test*//*
 		nvm_eeprom_write_byte(EP_address,i);
