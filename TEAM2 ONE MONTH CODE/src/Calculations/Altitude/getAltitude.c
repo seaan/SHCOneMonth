@@ -11,8 +11,6 @@
  #include <asf.h>
  #include <math.h>
  #include "Calculations/Altitude/getAltitude.h"
- #include "Drivers/Pressure/getPressure.h"
- #include "Drivers/Temperature/getTemperature.h"
 
  /* Global Variable Declarations */
 
@@ -23,6 +21,6 @@
 	float R = 287;
 	float g = 9.80665;
 	float pconst = 101325;
-
-	return ((R * temperature)/g)*log(pconst/pressure) * 3.28084; //return altitude in feet
+	printf("Temperature: %.2f\nPressure: %.2f\n",temperature,pressure);
+	return (((R * temperature)/g)*log(pconst/pressure)) * 3.28084; //return altitude in feet
  }

@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\common\drivers\nvm\xmega\xmega_nvm.c
+
 src\ASF\xmega\drivers\rtc\rtc.c
 
 src\ASF\xmega\drivers\spi\spi.c

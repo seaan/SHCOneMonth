@@ -1,6 +1,7 @@
-src/drivers/uart/uart_comms.d src/drivers/uart/uart_comms.o: \
- ../src/drivers/uart/uart_comms.c ../src/config/conf_usart_serial.h \
- ../src/asf.h ../src/ASF/xmega/drivers/adc/adc.h \
+src/ASF/common/drivers/nvm/xmega/xmega_nvm.d \
+ src/ASF/common/drivers/nvm/xmega/xmega_nvm.o: \
+ ../src/ASF/common/drivers/nvm/xmega/xmega_nvm.c \
+ ../src/ASF/common/drivers/nvm/common_nvm.h \
  ../src/ASF/xmega/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -30,48 +31,11 @@ src/drivers/uart/uart_comms.d src/drivers/uart/uart_comms.o: \
  ../src/ASF/common/utils/interrupt.h \
  ../src/ASF/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../src/config/conf_adc.h ../src/ASF/xmega/drivers/nvm/nvm.h \
- ../src/ASF/xmega/drivers/cpu/ccp.h \
- ../src/ASF/common/services/sleepmgr/sleepmgr.h \
- ../src/ASF/common/services/sleepmgr/xmega/sleepmgr.h \
- ../src/config/conf_sleepmgr.h ../src/ASF/xmega/drivers/sleep/sleep.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h \
- ../src/ASF/common/services/clock/sysclk.h ../src/config/conf_clock.h \
- ../src/ASF/common/services/clock/xmega/sysclk.h \
- ../src/ASF/common/boards/board.h \
- ../src/ASF/xmega/boards/xmega_a1_xplained/xmega_a1_xplained.h \
- ../src/ASF/common/services/clock/osc.h \
- ../src/ASF/common/services/clock/xmega/osc.h \
- ../src/ASF/common/services/clock/pll.h \
- ../src/ASF/common/services/clock/xmega/pll.h \
- ../src/ASF/xmega/drivers/cpu/xmega_reset_cause.h \
- ../src/ASF/xmega/drivers/cpu/ccp.h \
- ../src/ASF/common/services/delay/delay.h \
- ../src/ASF/common/services/delay/xmega/cycle_counter.h \
- ../src/ASF/common/services/gpio/gpio.h \
- ../src/ASF/common/services/gpio/xmega_gpio/xmega_gpio.h \
- ../src/ASF/common/services/ioport/ioport.h \
- ../src/ASF/common/services/ioport/xmega/ioport.h \
- ../src/ASF/common/services/ioport/xmega/ioport_compat.h \
- ../src/ASF/common/services/ioport/xmega/../ioport.h \
- ../src/ASF/common/drivers/nvm/common_nvm.h ../src/config/conf_board.h \
- ../src/ASF/xmega/utils/status_codes.h \
- ../src/ASF/xmega/drivers/pmic/pmic.h ../src/ASF/xmega/drivers/rtc/rtc.h \
- ../src/config/conf_rtc.h ../src/ASF/xmega/drivers/spi/spi.h \
- ../src/ASF/common/services/sleepmgr/xmega/sleepmgr.h \
- ../src/ASF/common/utils/stdio/stdio_serial/stdio_serial.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdarg.h \
- ../src/ASF/common/services/serial/serial.h \
- ../src/ASF/common/services/serial/xmega_usart/usart_serial.h \
- ../src/ASF/xmega/drivers/usart/usart.h \
- ../src/ASF/xmega/boards/xmega_a1_xplained/led.h
+ ../src/config/conf_board.h ../src/ASF/xmega/utils/status_codes.h \
+ ../src/config/conf_nvm.h ../src/ASF/xmega/drivers/nvm/nvm.h \
+ ../src/ASF/xmega/drivers/cpu/ccp.h
 
-../src/config/conf_usart_serial.h:
-
-../src/asf.h:
-
-../src/ASF/xmega/drivers/adc/adc.h:
+../src/ASF/common/drivers/nvm/common_nvm.h:
 
 ../src/ASF/xmega/utils/compiler.h:
 
@@ -131,86 +95,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
-../src/config/conf_adc.h:
-
-../src/ASF/xmega/drivers/nvm/nvm.h:
-
-../src/ASF/xmega/drivers/cpu/ccp.h:
-
-../src/ASF/common/services/sleepmgr/sleepmgr.h:
-
-../src/ASF/common/services/sleepmgr/xmega/sleepmgr.h:
-
-../src/config/conf_sleepmgr.h:
-
-../src/ASF/xmega/drivers/sleep/sleep.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h:
-
-../src/ASF/common/services/clock/sysclk.h:
-
-../src/config/conf_clock.h:
-
-../src/ASF/common/services/clock/xmega/sysclk.h:
-
-../src/ASF/common/boards/board.h:
-
-../src/ASF/xmega/boards/xmega_a1_xplained/xmega_a1_xplained.h:
-
-../src/ASF/common/services/clock/osc.h:
-
-../src/ASF/common/services/clock/xmega/osc.h:
-
-../src/ASF/common/services/clock/pll.h:
-
-../src/ASF/common/services/clock/xmega/pll.h:
-
-../src/ASF/xmega/drivers/cpu/xmega_reset_cause.h:
-
-../src/ASF/xmega/drivers/cpu/ccp.h:
-
-../src/ASF/common/services/delay/delay.h:
-
-../src/ASF/common/services/delay/xmega/cycle_counter.h:
-
-../src/ASF/common/services/gpio/gpio.h:
-
-../src/ASF/common/services/gpio/xmega_gpio/xmega_gpio.h:
-
-../src/ASF/common/services/ioport/ioport.h:
-
-../src/ASF/common/services/ioport/xmega/ioport.h:
-
-../src/ASF/common/services/ioport/xmega/ioport_compat.h:
-
-../src/ASF/common/services/ioport/xmega/../ioport.h:
-
-../src/ASF/common/drivers/nvm/common_nvm.h:
-
 ../src/config/conf_board.h:
 
 ../src/ASF/xmega/utils/status_codes.h:
 
-../src/ASF/xmega/drivers/pmic/pmic.h:
+../src/config/conf_nvm.h:
 
-../src/ASF/xmega/drivers/rtc/rtc.h:
+../src/ASF/xmega/drivers/nvm/nvm.h:
 
-../src/config/conf_rtc.h:
-
-../src/ASF/xmega/drivers/spi/spi.h:
-
-../src/ASF/common/services/sleepmgr/xmega/sleepmgr.h:
-
-../src/ASF/common/utils/stdio/stdio_serial/stdio_serial.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdarg.h:
-
-../src/ASF/common/services/serial/serial.h:
-
-../src/ASF/common/services/serial/xmega_usart/usart_serial.h:
-
-../src/ASF/xmega/drivers/usart/usart.h:
-
-../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
+../src/ASF/xmega/drivers/cpu/ccp.h:

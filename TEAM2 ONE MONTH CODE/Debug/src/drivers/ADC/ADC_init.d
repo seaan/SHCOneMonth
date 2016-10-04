@@ -53,9 +53,10 @@ src/drivers/ADC/ADC_init.d src/drivers/ADC/ADC_init.o: \
  ../src/ASF/common/services/ioport/xmega/ioport.h \
  ../src/ASF/common/services/ioport/xmega/ioport_compat.h \
  ../src/ASF/common/services/ioport/xmega/../ioport.h \
+ ../src/ASF/common/drivers/nvm/common_nvm.h ../src/config/conf_board.h \
+ ../src/ASF/xmega/utils/status_codes.h \
  ../src/ASF/xmega/drivers/pmic/pmic.h ../src/ASF/xmega/drivers/rtc/rtc.h \
  ../src/config/conf_rtc.h ../src/ASF/xmega/drivers/spi/spi.h \
- ../src/ASF/xmega/utils/status_codes.h \
  ../src/ASF/common/services/sleepmgr/xmega/sleepmgr.h \
  ../src/ASF/common/utils/stdio/stdio_serial/stdio_serial.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
@@ -182,6 +183,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../src/ASF/common/services/ioport/xmega/../ioport.h:
 
+../src/ASF/common/drivers/nvm/common_nvm.h:
+
+../src/config/conf_board.h:
+
+../src/ASF/xmega/utils/status_codes.h:
+
 ../src/ASF/xmega/drivers/pmic/pmic.h:
 
 ../src/ASF/xmega/drivers/rtc/rtc.h:
@@ -189,8 +196,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../src/config/conf_rtc.h:
 
 ../src/ASF/xmega/drivers/spi/spi.h:
-
-../src/ASF/xmega/utils/status_codes.h:
 
 ../src/ASF/common/services/sleepmgr/xmega/sleepmgr.h:
 
