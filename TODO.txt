@@ -6,14 +6,16 @@ x--Retest
 x--Test w/ alt
 x--Rewrite
 x--Retest
-DONE
+x--rewrite
+--retest************
+
 
 -PRESSURE
 x--Write
 x--Test
 x--Rewrite
 x--Retest
-DONE 	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaawwwww yeah
+
 
 
 -TEMPERATURE
@@ -21,7 +23,7 @@ x--Write
 x--Test
 x--Rewrite
 x--Retest
-DONE
+
 
 
 -ALTITUDE
@@ -29,7 +31,7 @@ x--Write
 x--Test
 x--Rewrite
 x--Retest
-DONE
+
 
 -VELOCITY
 x--Write
@@ -38,20 +40,21 @@ x--Rewrite
 x--Retest
 --Rewrite
 --Retest
+--alt now in feet
 
 -LED
 x--Write
 x--Test
 x--Rewrite
 X--Retest
-DONE
+
 
 -BUZZER
 x--Write
 x--Test
 x--Rewrite
 X--Retest
-DONE
+
 
 -MOTOR
 x--Write
@@ -67,3 +70,19 @@ x--Write
 X--Test
 X--Rewrite
 --Retest
+
+Cleaning Code
+x-Rewrite flight, altitude, velocity methods to be more efficient, take only one reading per calculations
+-Rewrite velocity method to differentiate & smooth as you go, instead of having to take 25 samples.
+-Move port initalizations to init methods
+-eeprom class & methods?
+-add hotwire to test class
+-add led to test class
+-add motors to test class
+-add buzzers to test class
+-add flight state tests to test class
+-write prescalar input switch case into LED class
+x-altitude reading to meters
+-flight state while loops to meters
+-turn motor off
+-go through flight state stuff again

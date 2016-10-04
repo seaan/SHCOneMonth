@@ -1,13 +1,19 @@
 /*
- * ADC_init.c
+ * timer_counter_init.c
  *
- * Created: 9/9/2015 1:32:34 PM
- *  Author: abower
- */ 
+ * Class to hold initializations for various analog to digital converters used across the project.
+ *
+ *  Author: seanw
+ */
+
+ /* Includes */
 #include <asf.h>
 #include "Drivers/ADC/ADC_init.h"
-/* This driver can be used to initialize any of the ADCs */
+/* Global Variable Declarations */
 
+/*******************************************************************************************/
+								/* Initialization methods */
+/* Initialize ADC for port A, thermistor*/
 void ADC_init(void){
 	ADCA.CTRLA = 0b00000001; //Enables the ADC.
 	ADCA.CTRLB = 0b00000000; //Unsigned 12 bit mode.

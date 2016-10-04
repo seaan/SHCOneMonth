@@ -1,46 +1,53 @@
 /*
- * getVelocity.c
+ * getAltitude.c
  *
- * Created: 9/20/2016 11:47:58 PM
+ * Class to hold methods needed for Velocity calculations.
+ *
+ * Created: 9/22/2016 11:45:21 AM
  *  Author: seanw
- */ 
+ */
+
+ /* Includes */
  #include <asf.h>
  #include "Calculations/Velocity/getVelocity.h"
  #include "Calculations/Altitude/getAltitude.h"
+ #include "Drivers/Pressure/getPressure.h"
+ #include "Drivers/Temperature/getTemperature.h"
 
- float exponentialSmoothing(float p_smth_vel, float current_vel);
+ /* Global Variable Declarations */
 
- //Velocity function
- float getVelocity(void){
+/*******************************************************************************************/
+								/* Velocity Calculation methods */
+/* Find velocity using change in altitude and time, utilizing numerical differentiation and exponential smooth to reduce noise.*/
+ float getVelocity(float current_alt, float previous_alt)
+{
 	float perms = 3.1249523;	
 	float arr_alt[25]; //Creates an array of size 25 for altitude.
 	float arr_vel[25]; //Velocity array.
 	float arr_time[25]; //time array
 	while (TCF0.CNT != TCF0.PER); //wait until interrupt is done.
-	float final_alt = getAltitude(); //sets final altitude for the loop to the current altitude.
+	float final_alt = getAltitude(getPressure(),getTemperature()); //sets final altitude for the loop to the current altitude.
 	for(int i = 0; i < 25; i++){ //For each element in altTable
 		while (TCF0.CNT != TCF0.PER); //wait until TCF0 overflows, which will take 10ms
-		//printf("final_alt:%.2f\n",final_alt);
-		//delay_ms(10); //Delay for 10ms, creates a sample rate for velocity of 100Hz. 
-		arr_alt[i] = final_alt - getAltitude(); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
-		//printf("arr_alt: %.2f\n",arr_alt[i]);
+
+		arr_alt[i] = final_alt - getAltitude(getPressure(),getTemperature()); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
 
 		arr_time[i] = TCF0.CNT/perms + 10; //time element array is one ahead so we can record the change in time + 10ms for the timer counter.
-		//printf("arr_time: %.2f\n",arr_time[i]);
 
-		final_alt = getAltitude(); //Sets the final altitude for the iteration to the current altitude.
+		final_alt = getAltitude(getPressure(),getTemperature()); //Sets the final altitude for the iteration to the current altitude.
 	}
 
+	/* Simple differentiation
 	for(int z = 1; z < 25; z++){
 		arr_vel[z] = arr_alt[z]/arr_time[z]; //Approximated velocity from delta alt / delta t.
 		printf("arr_vel: %.2f\n",arr_vel[z]);
-	}
+	}*/
 
-	//Attempt at numerical differentiation.
-	/*for(int z = 1; z < 25; z++){
+	/* numerical differentiation. */
+	for(int z = 1; z < 25; z++){
 		arr_vel[z] = (arr_alt[z+1] - arr_alt[z-1])/(2*arr_time[z]); //Approximated velocity using a centered difference scheme, reduces noise from taking the derivative.
 		printf("arr_vel: %.2f\n",arr_vel[z]);
-	}*/
+	}
 
 	arr_vel[0] = arr_alt[0]/arr_time[0]; //Still need to get the first velocity, time was missing ~10ms.
 
@@ -58,6 +65,7 @@
 	return s_vel/24; //The function finally ends with returning the average, or the sum of our 24 elements of velocity divided by 24.
  }
 
+ /* Exponential smoothing to reduce noise. */
  float exponentialSmoothing(float p_smth_vel, float current_vel){ //We need the previous smoothed value as well as the current un-smoothed value, as indicated by the equation on this page: https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_exponential_smoothing
 	float smooth_factor = .5; //50% smoothing factor, needs to be tested.
 	//printf("current_vel: %.2f\np_smth_vel:%.2f\n",current_vel,p_smth_vel);

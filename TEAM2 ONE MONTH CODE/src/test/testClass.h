@@ -11,8 +11,6 @@
 
 void lightChase(uint8_t delay);
 
-int ADC_test(uint8_t msDelay);
-
 void test(void);
 
 #endif /* TESTCLASS_H_ */

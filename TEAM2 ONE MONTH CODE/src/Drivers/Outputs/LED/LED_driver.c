@@ -1,12 +1,21 @@
 /*
- * LED_driver.c
+ * Buzzer_Driver.c
  *
- * Created: 9/25/2016 9:15:38 PM
+ * Class to hold LED methods, used to activate two XPEBGR-L1-0000-00G01-SB01 LEDs.
+ *
  *  Author: seanw
- */ 
-  /* LED method for two XPEBGR-L1-0000-00G01-SB01 LEDs */
+ */
+ 
+ /* Includes */
   #include <asf.h>
   #include "Drivers/Outputs/LED/LED_driver.h"
+
+  /* Global Variables */
+
+   /*******************************************************************************************/
+   						/* Simple LED methods */
+
+/* LED method to start LED @ a certain period and duty cycle. */
   void LED(uint16_t period,uint8_t duty_cycle){
 	  PORTD.OUT |= 0b00000010; //out, high = 1, low = 0.
 

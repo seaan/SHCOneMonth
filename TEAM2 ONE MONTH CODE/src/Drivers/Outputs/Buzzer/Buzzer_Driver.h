@@ -12,7 +12,7 @@
 void buzzer(uint16_t period);
 
 /* Music methods */
-//void setup();
+//void music();
 //void playMusic(int songLength, int* beats, int tempo, char* notes);
 //int frequency(char note);
 

@@ -1,27 +1,26 @@
 /*
- * altitudeMeasurement.c
+ * getAltitude.c
  *
- * Created: 9/20/2016 11:17:10 PM
+ * Class to hold methods needed for Altitude calculations.
+ *
+ * Created: 9/22/2016 11:45:21 AM
  *  Author: seanw
- */ 
+ */
+
+ /* Includes */
  #include <asf.h>
  #include <math.h>
  #include "Calculations/Altitude/getAltitude.h"
- #include "Drivers/Pressure/getPressure.h"
- #include "Drivers/Temperature/getTemperature.h"
- float getAltitude(void){
 
-	float temperature = getTemperature();
-	float pressure = (float)getPressure();
+ /* Global Variable Declarations */
+
+ /*******************************************************************************************/
+								 /* getAltitude method */
+/* Method that uses temperature and pressure w/ Hypsometric Equation. */
+ float getAltitude(float temperature, float pressure){
 	float R = 287;
 	float g = 9.80665;
 	float pconst = 101325;
-
-	float alt1 = (R*temperature)/g;
-	
-	float alt2 = log(pconst/pressure);
-
-	//printf("pressure: %f\ntemperature: %f\nalt1:%f\nalt2:%f\n",pressure,temperature,alt1,alt2);
-
-	return ((R * temperature)/g)*log(pconst/pressure);  //Equation found here: https://en.wikipedia.org/wiki/Hypsometric_equation 
+	printf("Temperature: %.2f\nPressure: %.2f\n",temperature,pressure);
+	return (((R * temperature)/g)*log(pconst/pressure)) * 3.28084; //return altitude in feet
  }
