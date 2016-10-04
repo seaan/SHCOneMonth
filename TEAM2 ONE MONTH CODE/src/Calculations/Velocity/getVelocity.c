@@ -19,22 +19,23 @@
 /*******************************************************************************************/
 								/* Velocity Calculation methods */
 /* Find velocity using change in altitude and time, utilizing numerical differentiation and exponential smooth to reduce noise.*/
- float getVelocity(float current_alt, float previous_alt)
-{
-	float perms = 3.1249523;	
+float getVelocity(void){
+	float perms = 3.1249523; //number of cycles of the timer counter per millisecond
 	float arr_alt[25]; //Creates an array of size 25 for altitude.
 	float arr_vel[25]; //Velocity array.
-	float arr_time[25]; //time array
-	while (TCF0.CNT != TCF0.PER); //wait until interrupt is done.
+	float arr_time[25]; //time array'
+
 	float final_alt = getAltitude(getPressure(),getTemperature()); //sets final altitude for the loop to the current altitude.
 	for(int i = 0; i < 25; i++){ //For each element in altTable
+		TCF0.CNT = 0;
 		while (TCF0.CNT != TCF0.PER); //wait until TCF0 overflows, which will take 10ms
 
-		arr_alt[i] = final_alt - getAltitude(getPressure(),getTemperature()); //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
+		arr_alt[i] = getAltitude(getPressure(),getTemperature()) - final_alt ; //Set the current element to the delta altitude found with final altitude of the previous iteration subtracted by the current altitude.
 
 		arr_time[i] = TCF0.CNT/perms + 10; //time element array is one ahead so we can record the change in time + 10ms for the timer counter.
 
 		final_alt = getAltitude(getPressure(),getTemperature()); //Sets the final altitude for the iteration to the current altitude.
+
 	}
 
 	/* Simple differentiation
