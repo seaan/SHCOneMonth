@@ -136,7 +136,6 @@ int main (void){
 			deployParachute();
 		alt = (float)getAltitude(getTemperature(),getPressure()) - initAlt;; //find our altitude
 	}
-	//turn motor off
 	write_eeprom((uint8_t)(alt/3.28084)); //save the altitude (in meters) that caused us to exit flight state 2.
  }
 
@@ -148,11 +147,14 @@ int main (void){
 
 	write_eeprom(3); //indicates the flight state.
 
+	delay_s(5); //wait a few seconds before turning off the motors.
+	PORTD.OUT &= 0b11111011; //turn motor off
+
 	alt = (float)getAltitude(getTemperature(),getPressure()) - initAlt;; //find our altitude before we enter the for loop
 	for(int i = 0; i < 3; i++){ //save data only three times, this flight state is kinda boring.
 		write_eeprom((uint8_t)(alt/3.28084));
 
-		delay_ms(300000); //Save data every 5 minutes.
+		delay_s(300); //Save data every 5 minutes.
 		alt = (float)getAltitude(getTemperature(),getPressure()) - initAlt;; //find our altitude
 	}
 	while(1);

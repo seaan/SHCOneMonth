@@ -21,7 +21,7 @@
 /* Find velocity using change in altitude and time, utilizing numerical differentiation and exponential smooth to reduce noise.*/
  float getVelocity(float current_alt, float previous_alt)
 {
-	float perms = 3.1249523;	
+	float perms = 3.1249523; //number of cycles of the timer counter per millisecond
 	float arr_alt[25]; //Creates an array of size 25 for altitude.
 	float arr_vel[25]; //Velocity array.
 	float arr_time[25]; //time array
