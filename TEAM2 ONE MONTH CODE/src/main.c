@@ -132,7 +132,7 @@ int main (void){
 		write_eeprom((uint8_t)(alt/3.28084)); //save our altitude (in meters)
 
 		delay_ms(250); //Find & save data every quarter sec.
-		if (getVelocity(getAltitude(getTemperature(),getPressure()), alt) < -24.384) //rough estimate for what velocity we want to deploy the parachute at
+		if (getVelocity() < -24.384) //rough estimate for what velocity we want to deploy the parachute at
 			deployParachute();
 		alt = (float)getAltitude(getTemperature(),getPressure()) - initAlt;; //find our altitude
 	}
