@@ -7,7 +7,7 @@
 
 
 #ifndef ADC_INIT_H_
-#define EEPROM_DRIVER_H_
+#define ADC_INIT_H_
 
 /* Place any #defines or function prototypes here */
 void ADC_init(void);
