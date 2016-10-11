@@ -48,12 +48,10 @@ void test(void){
 	//TCE0_init(12499,100);
 	while(1){
 		lightChase(100);
-		//printf("Test:\n");
-		float p = (float)(getPressure()); 
+		printf("Test:\n");
 		//printf("Pressure is:%.2f\n",p);
-		float temp = getTemperature();
 		//printf("Temperature is:%.2f\n",temp);
-		printf("Altitude is:%.2f\n",getAltitude(temp,p));
+		printf("Altitude is:%.2f\n",getAltitude(getTemperature(),getPressure()));
 		//printf("and velocity is:%.2f\n",getVelocity());
 		delay_s(1);
 		printf("\n\n");

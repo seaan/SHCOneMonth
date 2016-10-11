@@ -17,10 +17,11 @@
  /*******************************************************************************************/
 								 /* getAltitude method */
 /* Method that uses temperature and pressure w/ Hypsometric Equation. */
- float getAltitude(float temperature, float pressure){
+ float getAltitude(float temperature, uint32_t inputpressure){
+	float pressure = (float)inputpressure;
 	float R = 287;
 	float g = 9.80665;
 	float pconst = 101325;
-	printf("Temperature: %.2f\nPressure: %.2f\n",temperature,pressure);
+	//printf("Temperature: %.2f\nPressure: %.2f\n",temperature,pressure);
 	return (((R * temperature)/g)*log(pconst/pressure)) * 3.28084; //return altitude in feet
  }

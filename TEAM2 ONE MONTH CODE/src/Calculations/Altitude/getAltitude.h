@@ -9,6 +9,6 @@
 #ifndef GETALTITUDE_H_
 #define GETALTITUDE_H_
 
-float getAltitude(float temperature, float pressure);
+float getAltitude(float temperature, uint32_t inputpressure);
 
 #endif /* GETALTITUDE_H_*/

@@ -73,8 +73,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/Drivers/Outputs/Motor/Motor_driver.h \
  ../src/Drivers/Pressure/getPressure.h \
  ../src/Drivers/Temperature/getTemperature.h \
- ../src/Drivers/timerCounter/timer_counter_init.h \
- ../src/drivers/EEPROM/EEPROM_driver.h
+ ../src/Drivers/timerCounter/timer_counter_init.h
 
 ../src/asf.h:
 
@@ -249,5 +248,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../src/Drivers/Temperature/getTemperature.h:
 
 ../src/Drivers/timerCounter/timer_counter_init.h:
-
-../src/drivers/EEPROM/EEPROM_driver.h:

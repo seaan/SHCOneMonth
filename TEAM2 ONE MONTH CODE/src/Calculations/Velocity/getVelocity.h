@@ -9,7 +9,7 @@
 #ifndef GETVELOCITY_H_
 #define GETVELOCITY_H_
 
-float getVelocity(float current_alt, float previous_alt); //Velocity function
+float getVelocity(void); //Velocity function
 float exponentialSmoothing(float p_smth_vel, float current_vel);
 
 
